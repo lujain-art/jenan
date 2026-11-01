@@ -1,0 +1,136 @@
+<svg id="char-orbit" class="char-src" viewBox="0 0 380 440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="orbit-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b28dff"/>
+      <stop offset=".5" stop-color="#7b4bd6"/>
+      <stop offset="1" stop-color="#4a2490"/>
+    </linearGradient>
+    <linearGradient id="orbit-panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#173b57"/>
+      <stop offset="1" stop-color="#071a2c"/>
+    </linearGradient>
+    <radialGradient id="orbit-glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#6ff7ff" stop-opacity=".4"/>
+      <stop offset=".6" stop-color="#8b6bff" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#8b6bff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbit-thrust" cx=".5" cy=".2" r=".7">
+      <stop offset="0" stop-color="#e6ffff" stop-opacity=".95"/>
+      <stop offset=".45" stop-color="#6ff7ff" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#4fa8ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="orbit-antenna" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6ff7ff"/>
+      <stop offset="1" stop-color="#8b6bff"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="190" cy="414" rx="84" ry="11" fill="#02040c" opacity=".34"/>
+  <circle cx="190" cy="245" r="172" fill="url(#orbit-glow)"/>
+
+  <g class="ring-group">
+    <ellipse class="ring-a" cx="190" cy="245" rx="146" ry="42" fill="none" stroke="#6ff7ff" stroke-width="3" opacity=".42" transform="rotate(-14 190 245)"/>
+    <ellipse class="ring-b" cx="190" cy="245" rx="128" ry="32" fill="none" stroke="#b28dff" stroke-width="2.6" opacity=".45" transform="rotate(34 190 245)"/>
+    <circle cx="52" cy="262" r="5" fill="#6ff7ff" opacity=".8"/>
+    <circle cx="330" cy="226" r="4" fill="#b28dff" opacity=".8"/>
+  </g>
+
+  <g class="body-bob">
+    <g class="thruster">
+      <path d="M158 344h64l-14 34q-4 10-18 10t-18-10z" fill="#2b1a58" stroke="#1a1036" stroke-width="5" stroke-linejoin="round"/>
+      <ellipse class="thrust-glow" cx="190" cy="386" rx="26" ry="20" fill="url(#orbit-thrust)"/>
+    </g>
+
+    <g class="antenna">
+      <path d="M190 148v-38" stroke="url(#orbit-antenna)" stroke-width="6" stroke-linecap="round"/>
+      <circle class="antenna-tip" cx="190" cy="104" r="10" fill="#8ffcff" stroke="#1a1036" stroke-width="4"/>
+      <circle cx="190" cy="104" r="4" fill="#ffffff"/>
+      <path d="M136 150l-18-26M244 150l18-26" stroke="#4a2a8f" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="118" cy="124" r="5" fill="#b28dff"/>
+      <circle cx="262" cy="124" r="5" fill="#b28dff"/>
+    </g>
+
+    <g class="orbit-body">
+      <path d="M190 140q70 0 102 42 18 24 18 66v44q0 48-44 56-36 7-76 7t-76-7q-44-8-44-56v-44q0-42 18-66 32-42 102-42z"
+        fill="url(#orbit-body)" stroke="#1a1036" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M190 150q58 0 86 36 15 20 15 58" fill="none" stroke="#d9c7ff" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+
+      <circle cx="86" cy="240" r="23" fill="#3b2278" stroke="#1a1036" stroke-width="5"/>
+      <circle cx="86" cy="240" r="10" fill="none" stroke="#6ff7ff" stroke-width="3"/>
+      <circle cx="294" cy="240" r="23" fill="#3b2278" stroke="#1a1036" stroke-width="5"/>
+      <circle cx="294" cy="240" r="10" fill="none" stroke="#6ff7ff" stroke-width="3"/>
+
+      <rect x="106" y="172" width="168" height="126" rx="30" fill="url(#orbit-panel)" stroke="#6ff7ff" stroke-width="3.5"/>
+      <path d="M126 196h128M126 220h128M126 244h128M126 268h128" stroke="#2b7d9c" stroke-width="1.4" opacity=".35"/>
+      <path d="M148 186v104M180 186v104M212 186v104M244 186v104" stroke="#2b7d9c" stroke-width="1.4" opacity=".22"/>
+      <rect class="scanline" x="110" y="198" width="160" height="5" rx="2.5" fill="#6ff7ff" opacity=".18"/>
+
+      <g class="eyes eyes-neutral">
+        <rect x="142" y="204" width="24" height="28" rx="9" fill="#6ff7ff"/>
+        <rect x="214" y="204" width="24" height="28" rx="9" fill="#6ff7ff"/>
+        <rect x="148" y="210" width="8" height="12" rx="4" fill="#eaffff" opacity=".85"/>
+        <rect x="220" y="210" width="8" height="12" rx="4" fill="#eaffff" opacity=".85"/>
+      </g>
+      <g class="eyes eyes-happy" style="display:none">
+        <path d="M142 224q12-18 24 0" stroke="#6ff7ff" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M214 224q12-18 24 0" stroke="#6ff7ff" stroke-width="6" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="eyes eyes-sad" style="display:none">
+        <rect x="142" y="216" width="24" height="16" rx="7" fill="#3aa9c9"/>
+        <rect x="214" y="216" width="24" height="16" rx="7" fill="#3aa9c9"/>
+        <path d="M142 204l24 8M214 204l24 8" stroke="#2b7d9c" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <g class="eyes eyes-surprised" style="display:none">
+        <rect x="138" y="198" width="32" height="38" rx="12" fill="#9ffcff"/>
+        <rect x="210" y="198" width="32" height="38" rx="12" fill="#9ffcff"/>
+        <circle cx="154" cy="216" r="5" fill="#0a2a3c"/>
+        <circle cx="226" cy="216" r="5" fill="#0a2a3c"/>
+      </g>
+
+      <g class="mouth mouth-neutral">
+        <rect x="156" y="252" width="5" height="10" rx="2.5" fill="#6ff7ff"/>
+        <rect x="166" y="249" width="5" height="16" rx="2.5" fill="#6ff7ff"/>
+        <rect x="176" y="247" width="5" height="20" rx="2.5" fill="#6ff7ff"/>
+        <rect x="186" y="250" width="5" height="14" rx="2.5" fill="#6ff7ff"/>
+        <rect x="196" y="247" width="5" height="20" rx="2.5" fill="#6ff7ff"/>
+        <rect x="206" y="249" width="5" height="16" rx="2.5" fill="#6ff7ff"/>
+        <rect x="216" y="252" width="5" height="10" rx="2.5" fill="#6ff7ff"/>
+      </g>
+      <g class="mouth mouth-talk" style="display:none">
+        <rect class="bar" x="152" y="246" width="5" height="14" rx="2.5" fill="#9ffcff"/>
+        <rect class="bar" x="162" y="242" width="5" height="22" rx="2.5" fill="#9ffcff"/>
+        <rect class="bar" x="172" y="238" width="5" height="30" rx="2.5" fill="#9ffcff"/>
+        <rect class="bar" x="182" y="244" width="5" height="18" rx="2.5" fill="#9ffcff"/>
+        <rect class="bar" x="192" y="238" width="5" height="30" rx="2.5" fill="#9ffcff"/>
+        <rect class="bar" x="202" y="242" width="5" height="22" rx="2.5" fill="#9ffcff"/>
+        <rect class="bar" x="212" y="246" width="5" height="14" rx="2.5" fill="#9ffcff"/>
+      </g>
+      <g class="mouth mouth-happy" style="display:none">
+        <path d="M158 252q32 26 64 0" stroke="#6ff7ff" stroke-width="6" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="mouth mouth-sad" style="display:none">
+        <path d="M160 262q30-18 60 0" stroke="#3aa9c9" stroke-width="6" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="mouth mouth-surprised" style="display:none">
+        <circle cx="190" cy="257" r="9" fill="none" stroke="#9ffcff" stroke-width="5"/>
+      </g>
+
+      <circle cx="124" cy="262" r="5" fill="#b28dff" opacity=".8"/>
+      <circle cx="256" cy="262" r="5" fill="#b28dff" opacity=".8"/>
+
+      <path d="M108 314h164" stroke="#2b1a58" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+      <circle class="chest-light" cx="190" cy="332" r="8" fill="#6ff7ff" stroke="#1a1036" stroke-width="3"/>
+      <circle cx="168" cy="332" r="3.4" fill="#ffd166" opacity=".9"/>
+      <circle cx="212" cy="332" r="3.4" fill="#ff7aa8" opacity=".9"/>
+
+      <g class="arm arm-l">
+        <path d="M88 286q-18 12-14 34 3 12 14 9 9-3 7-14-2-12 8-20z" fill="#6a3fc4" stroke="#1a1036" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="76" cy="326" r="9" fill="#b28dff" stroke="#1a1036" stroke-width="3"/>
+      </g>
+      <g class="arm arm-r">
+        <path d="M292 286q18 12 14 34-3 12-14 9-9-3-7-14 2-12-8-20z" fill="#6a3fc4" stroke="#1a1036" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="304" cy="326" r="9" fill="#b28dff" stroke="#1a1036" stroke-width="3"/>
+      </g>
+    </g>
+  </g>
+</svg>

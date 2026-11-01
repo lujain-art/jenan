@@ -1,0 +1,225 @@
+<svg id="char-nova" class="char-src" viewBox="0 0 460 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nova-suit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5ff8e6"/>
+      <stop offset=".42" stop-color="#1aa8d4"/>
+      <stop offset="1" stop-color="#0a3a76"/>
+    </linearGradient>
+    <linearGradient id="nova-suit-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16477c"/>
+      <stop offset="1" stop-color="#071a37"/>
+    </linearGradient>
+    <linearGradient id="nova-skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe0c6"/>
+      <stop offset=".62" stop-color="#f7c39a"/>
+      <stop offset="1" stop-color="#e9a878"/>
+    </linearGradient>
+    <linearGradient id="nova-hair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b2f57"/>
+      <stop offset="1" stop-color="#171226"/>
+    </linearGradient>
+    <linearGradient id="nova-boot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12436f"/>
+      <stop offset="1" stop-color="#05142c"/>
+    </linearGradient>
+    <linearGradient id="nova-pack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#164a80"/>
+      <stop offset="1" stop-color="#071c3a"/>
+    </linearGradient>
+    <radialGradient id="nova-core" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#e6ffff"/>
+      <stop offset=".42" stop-color="#57f4ff"/>
+      <stop offset=".78" stop-color="#1aa8d4" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#1aa8d4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="nova-rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ffcff"/>
+      <stop offset="1" stop-color="#1b6bb0"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="230" cy="612" rx="118" ry="17" fill="#02040c" opacity=".38"/>
+
+  <g class="body-bob">
+    <!-- backpack -->
+    <g class="pack">
+      <rect x="142" y="330" width="176" height="180" rx="36" fill="url(#nova-pack)" stroke="#081a34" stroke-width="7"/>
+      <rect x="160" y="346" width="140" height="48" rx="18" fill="#0c2a52" opacity=".9"/>
+      <path d="M172 370h116" stroke="#4fe6ff" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+      <circle class="pack-core" cx="230" cy="436" r="36" fill="url(#nova-core)" opacity=".55"/>
+      <circle cx="230" cy="436" r="15" fill="none" stroke="#a9fbff" stroke-width="3" opacity=".8"/>
+      <path d="M230 416v-10M230 466v-10M210 436h-10M260 436h-10" stroke="#8ff4ff" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+      <rect x="126" y="358" width="28" height="92" rx="14" fill="#123a6b" stroke="#081a34" stroke-width="5"/>
+      <rect x="306" y="358" width="28" height="92" rx="14" fill="#123a6b" stroke="#081a34" stroke-width="5"/>
+      <path d="M134 376v54M316 376v54" stroke="#4fe6ff" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+    </g>
+
+    <!-- legs -->
+    <g class="legs">
+      <path d="M182 458h46v110q0 16-13 16h-20q-13 0-13-16z" fill="url(#nova-suit-dark)" stroke="#081a34" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M232 458h46v110q0 16-13 16h-20q-13 0-13-16z" fill="url(#nova-suit-dark)" stroke="#081a34" stroke-width="7" stroke-linejoin="round"/>
+      <rect x="181" y="508" width="48" height="28" rx="13" fill="#0f4d7a" stroke="#081a34" stroke-width="5"/>
+      <rect x="231" y="508" width="48" height="28" rx="13" fill="#0f4d7a" stroke="#081a34" stroke-width="5"/>
+      <path d="M194 522h22M244 522h22" stroke="#5ff8e6" stroke-width="4" stroke-linecap="round"/>
+      <path d="M172 570h64q6 0 8 7l10 20q4 13-9 13h-80q-14 0-9-13l8-20q2-7 8-7z" fill="url(#nova-boot)" stroke="#081a34" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M226 570h64q6 0 8 7l8 20q4 13-9 13h-80q-14 0-9-13l10-20q2-7 8-7z" fill="url(#nova-boot)" stroke="#081a34" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M164 604h80M226 604h80" stroke="#5ff8e6" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+      <circle cx="182" cy="586" r="4" fill="#5ff8e6" opacity=".8"/>
+      <circle cx="242" cy="586" r="4" fill="#5ff8e6" opacity=".8"/>
+    </g>
+
+    <!-- torso -->
+    <g class="torso">
+      <path d="M166 306q0-20 22-26h84q22 6 22 26l10 144q2 22-20 24H176q-22-2-20-24z"
+        fill="url(#nova-suit)" stroke="#081a34" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M196 288h68l16 58-50 46-50-46z" fill="#082a50" opacity=".45"/>
+      <path d="M192 330h76q10 0 10 10v58q0 10-10 10h-76q-10 0-10-10v-58q0-10 10-10z"
+        fill="#07213d" stroke="#6ff7ff" stroke-width="3.5"/>
+      <circle cx="230" cy="359" r="22" fill="url(#nova-core)"/>
+      <circle cx="230" cy="359" r="13" fill="none" stroke="#d6feff" stroke-width="2.5" opacity=".9"/>
+      <path d="M230 343v32M214 359h32" stroke="#bffcff" stroke-width="2.5" stroke-linecap="round" opacity=".75"/>
+      <path d="M198 402h64M198 412h42" stroke="#6ff7ff" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+      <rect x="158" y="450" width="144" height="30" rx="13" fill="#092146" stroke="#081a34" stroke-width="5"/>
+      <rect x="214" y="450" width="32" height="30" rx="8" fill="#ffd166" stroke="#a8710d" stroke-width="3"/>
+      <path d="M224 465h12" stroke="#8a5b08" stroke-width="3" stroke-linecap="round"/>
+      <rect x="170" y="458" width="30" height="16" rx="7" fill="#0e3a66"/>
+      <rect x="260" y="458" width="30" height="16" rx="7" fill="#0e3a66"/>
+      <ellipse cx="168" cy="316" rx="35" ry="24" fill="#1c87bd" stroke="#081a34" stroke-width="6"/>
+      <ellipse cx="292" cy="316" rx="35" ry="24" fill="#1c87bd" stroke="#081a34" stroke-width="6"/>
+      <path d="M154 312q10-10 26-4M280 308q16-6 26 4" stroke="#9ffcff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>
+    </g>
+
+    <!-- left arm -->
+    <g class="arm arm-l">
+      <path d="M164 316q-26 32-32 92-2 20 16 22 17 2 21-17l10-63z"
+        fill="url(#nova-suit)" stroke="#081a34" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M136 420h38" stroke="#6ff7ff" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="147" cy="452" r="19" fill="url(#nova-skin)" stroke="#081a34" stroke-width="6"/>
+      <path d="M134 446q10-8 22-2" stroke="#c98256" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- right arm (waving) -->
+    <g class="arm arm-r">
+      <path d="M296 316q36-8 58-48 11-21 29-12 17 9 6 30-22 46-72 64z"
+        fill="url(#nova-suit)" stroke="#081a34" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M348 268l22-26" stroke="#6ff7ff" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="378" cy="246" r="19" fill="url(#nova-skin)" stroke="#081a34" stroke-width="6"/>
+      <path d="M368 236q9-8 19-3" stroke="#c98256" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M366 254q10 4 19-1" stroke="#e5a97c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- head -->
+    <g class="head">
+      <path d="M212 270h36v42h-36z" fill="url(#nova-skin)" stroke="#081a34" stroke-width="6"/>
+      <path d="M184 294q46 24 92 0l9 26q-55 26-110 0z" fill="#0c2c55" stroke="#081a34" stroke-width="6" stroke-linejoin="round"/>
+
+      <ellipse cx="230" cy="192" rx="106" ry="116" fill="#123c68" stroke="#081a34" stroke-width="8"/>
+      <path d="M230 82q78 0 96 76-20-36-52-44-22 20-52 20-28 0-50-18-26 10-38 42-14-64 96-76z" fill="#1a5a92" opacity=".55"/>
+      <circle cx="126" cy="202" r="23" fill="#0f3b6b" stroke="#081a34" stroke-width="6"/>
+      <circle cx="126" cy="202" r="10" fill="#4fe6ff" opacity=".75"/>
+      <circle cx="334" cy="202" r="23" fill="#0f3b6b" stroke="#081a34" stroke-width="6"/>
+      <circle cx="334" cy="202" r="10" fill="#4fe6ff" opacity=".75"/>
+
+      <ellipse cx="230" cy="202" rx="84" ry="98" fill="url(#nova-skin)" stroke="#081a34" stroke-width="6"/>
+
+      <!-- hair -->
+      <path d="M150 186q2-78 80-80 78 2 82 80-14-38-44-46-6 18-36 20-32 2-52-14-20 10-30 40z"
+        fill="url(#nova-hair)" stroke="#081a34" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M180 126q18-18 50-18 30 0 48 16" stroke="#5b4a80" stroke-width="4" fill="none" stroke-linecap="round" opacity=".65"/>
+
+      <ellipse cx="168" cy="234" rx="13" ry="8" fill="#f2937f" opacity=".38"/>
+      <ellipse cx="292" cy="234" rx="13" ry="8" fill="#f2937f" opacity=".38"/>
+
+      <!-- expressions -->
+      <g class="brows expr-neutral">
+        <path d="M180 174q16-10 32-3" stroke="#3a2a3f" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M248 171q16-7 32 3" stroke="#3a2a3f" stroke-width="6" stroke-linecap="round" fill="none"/>
+      </g>
+      <g class="brows expr-happy" style="display:none">
+        <path d="M180 168q16-12 32-4" stroke="#3a2a3f" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M248 164q16-8 32 4" stroke="#3a2a3f" stroke-width="6" stroke-linecap="round" fill="none"/>
+      </g>
+      <g class="brows expr-sad" style="display:none">
+        <path d="M180 170q16-4 32 6" stroke="#3a2a3f" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M248 176q16-10 32-6" stroke="#3a2a3f" stroke-width="6" stroke-linecap="round" fill="none"/>
+      </g>
+      <g class="brows expr-surprised" style="display:none">
+        <path d="M180 160q16-14 32-2" stroke="#3a2a3f" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M248 158q16-12 32 2" stroke="#3a2a3f" stroke-width="6" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <g class="eyes eyes-neutral">
+        <g class="eye eye-l">
+          <ellipse cx="198" cy="204" rx="20" ry="24" fill="#ffffff" stroke="#081a34" stroke-width="3.5"/>
+          <circle cx="201" cy="207" r="10" fill="#20356d"/>
+          <circle cx="201" cy="207" r="5" fill="#0d1730"/>
+          <circle cx="204.5" cy="202.5" r="2.8" fill="#ffffff"/>
+        </g>
+        <g class="eye eye-r">
+          <ellipse cx="262" cy="204" rx="20" ry="24" fill="#ffffff" stroke="#081a34" stroke-width="3.5"/>
+          <circle cx="265" cy="207" r="10" fill="#20356d"/>
+          <circle cx="265" cy="207" r="5" fill="#0d1730"/>
+          <circle cx="268.5" cy="202.5" r="2.8" fill="#ffffff"/>
+        </g>
+      </g>
+      <g class="eyes eyes-happy" style="display:none">
+        <path d="M178 208q20-20 40 0" stroke="#20356d" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M242 208q20-20 40 0" stroke="#20356d" stroke-width="7" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="eyes eyes-sad" style="display:none">
+        <g class="eye">
+          <ellipse cx="198" cy="208" rx="20" ry="19" fill="#ffffff" stroke="#081a34" stroke-width="3.5"/>
+          <circle cx="201" cy="213" r="9" fill="#20356d"/>
+          <circle cx="201" cy="213" r="4.5" fill="#0d1730"/>
+          <circle cx="204" cy="209" r="2.4" fill="#ffffff"/>
+          <path d="M178 198q20-8 40 0" stroke="#b98b6c" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </g>
+        <g class="eye">
+          <ellipse cx="262" cy="208" rx="20" ry="19" fill="#ffffff" stroke="#081a34" stroke-width="3.5"/>
+          <circle cx="265" cy="213" r="9" fill="#20356d"/>
+          <circle cx="265" cy="213" r="4.5" fill="#0d1730"/>
+          <circle cx="268" cy="209" r="2.4" fill="#ffffff"/>
+          <path d="M242 198q20-8 40 0" stroke="#b98b6c" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+      <g class="eyes eyes-surprised" style="display:none">
+        <g class="eye">
+          <ellipse cx="198" cy="202" rx="23" ry="28" fill="#ffffff" stroke="#081a34" stroke-width="3.5"/>
+          <circle cx="201" cy="205" r="8" fill="#20356d"/>
+          <circle cx="201" cy="205" r="4" fill="#0d1730"/>
+          <circle cx="204" cy="201" r="2.6" fill="#ffffff"/>
+        </g>
+        <g class="eye">
+          <ellipse cx="262" cy="202" rx="23" ry="28" fill="#ffffff" stroke="#081a34" stroke-width="3.5"/>
+          <circle cx="265" cy="205" r="8" fill="#20356d"/>
+          <circle cx="265" cy="205" r="4" fill="#0d1730"/>
+          <circle cx="268" cy="201" r="2.6" fill="#ffffff"/>
+        </g>
+      </g>
+
+      <path d="M230 220q6 10 0 14" stroke="#d59468" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+      <g class="mouth mouth-neutral">
+        <path d="M210 250q20 16 40 0" stroke="#8a3d4a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+        <path d="M218 253q12 5 24 0" stroke="#ff9fb0" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".55"/>
+      </g>
+      <g class="mouth mouth-talk" style="display:none">
+        <ellipse cx="230" cy="252" rx="13" ry="10" fill="#6e2438" stroke="#4d1626" stroke-width="2.5"/>
+        <path d="M222 257q8 6 16 0" fill="#ff8fa3" opacity=".8"/>
+      </g>
+      <g class="mouth mouth-happy" style="display:none">
+        <path d="M208 247q22 26 44 0-22 10-44 0z" fill="#6e2438" stroke="#4d1626" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M220 252q10 8 20 0-10 5-20 0z" fill="#ff8fa3" opacity=".85"/>
+      </g>
+      <g class="mouth mouth-sad" style="display:none">
+        <path d="M212 258q18-14 36 0" stroke="#8a3d4a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="mouth mouth-surprised" style="display:none">
+        <ellipse cx="230" cy="254" rx="10" ry="13" fill="#6e2438" stroke="#4d1626" stroke-width="2.5"/>
+      </g>
+
+      <path d="M150 274q80 30 160 0" stroke="#0a1c38" stroke-width="6" fill="none" stroke-linecap="round" opacity=".4"/>
+      <path d="M156 122q22-24 74-24" stroke="#8ffcff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".45"/>
+    </g>
+  </g>
+</svg>

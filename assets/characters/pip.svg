@@ -1,0 +1,128 @@
+<svg id="char-pip" class="char-src" viewBox="0 0 360 440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="pip-shell" cx=".4" cy=".32" r=".78">
+      <stop offset="0" stop-color="#fffbe0" stop-opacity=".98"/>
+      <stop offset=".34" stop-color="#ffe08a" stop-opacity=".92"/>
+      <stop offset=".66" stop-color="#5ce9f2" stop-opacity=".68"/>
+      <stop offset="1" stop-color="#148ec9" stop-opacity=".5"/>
+    </radialGradient>
+    <radialGradient id="pip-core" cx=".42" cy=".36" r=".62">
+      <stop offset="0" stop-color="#fffdf2"/>
+      <stop offset=".46" stop-color="#ffd166"/>
+      <stop offset="1" stop-color="#ff9f43" stop-opacity=".15"/>
+    </radialGradient>
+    <radialGradient id="pip-glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#7ff4ff" stop-opacity=".4"/>
+      <stop offset=".55" stop-color="#ffd166" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#7ff4ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pip-fin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b9fbff"/>
+      <stop offset="1" stop-color="#33bfe4"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="180" cy="404" rx="70" ry="10" fill="#02040c" opacity=".3"/>
+  <circle cx="180" cy="208" r="158" fill="url(#pip-glow)"/>
+
+  <g class="ring-group">
+    <ellipse class="ring-a" cx="180" cy="214" rx="126" ry="40" fill="none" stroke="#8ff4ff" stroke-width="3" opacity=".5" transform="rotate(-18 180 214)"/>
+    <ellipse class="ring-b" cx="180" cy="214" rx="112" ry="32" fill="none" stroke="#ffd166" stroke-width="2.4" opacity=".4" transform="rotate(28 180 214)"/>
+  </g>
+
+  <g class="body-bob">
+    <g class="fin fin-l">
+      <path d="M98 198q-34-14-44 12-8 22 16 32 18 8 30-6z" fill="url(#pip-fin)" stroke="#1a6d9c" stroke-width="4" stroke-linejoin="round" opacity=".9"/>
+      <path d="M70 214q16-4 26 6" stroke="#e8ffff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".65"/>
+    </g>
+    <g class="fin fin-r">
+      <path d="M262 198q34-14 44 12 8 22-16 32-18 8-30-6z" fill="url(#pip-fin)" stroke="#1a6d9c" stroke-width="4" stroke-linejoin="round" opacity=".9"/>
+      <path d="M290 214q-16-4-26 6" stroke="#e8ffff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".65"/>
+    </g>
+
+    <g class="pip-body">
+      <circle cx="180" cy="205" r="94" fill="url(#pip-shell)" stroke="#5ce9f2" stroke-width="5"/>
+      <circle cx="180" cy="205" r="76" fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".28"/>
+      <circle class="pip-core" cx="180" cy="205" r="58" fill="url(#pip-core)" opacity=".82"/>
+      <ellipse cx="148" cy="158" rx="36" ry="19" fill="#ffffff" opacity=".5" transform="rotate(-30 148 158)"/>
+      <circle cx="214" cy="252" r="10" fill="#ffffff" opacity=".26"/>
+      <path d="M108 240q72 50 144 0" fill="none" stroke="#ffffff" stroke-width="4" opacity=".16" stroke-linecap="round"/>
+
+      <g class="eyes eyes-neutral">
+        <g class="eye eye-l">
+          <ellipse cx="150" cy="196" rx="21" ry="25" fill="#ffffff" stroke="#145a78" stroke-width="3.5"/>
+          <circle cx="153" cy="199" r="10" fill="#12364e"/>
+          <circle cx="153" cy="199" r="4.8" fill="#081f2d"/>
+          <circle cx="157" cy="194" r="3.2" fill="#ffffff"/>
+        </g>
+        <g class="eye eye-r">
+          <ellipse cx="210" cy="196" rx="21" ry="25" fill="#ffffff" stroke="#145a78" stroke-width="3.5"/>
+          <circle cx="213" cy="199" r="10" fill="#12364e"/>
+          <circle cx="213" cy="199" r="4.8" fill="#081f2d"/>
+          <circle cx="217" cy="194" r="3.2" fill="#ffffff"/>
+        </g>
+      </g>
+      <g class="eyes eyes-happy" style="display:none">
+        <path d="M130 200q20-22 40 0" stroke="#12364e" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M190 200q20-22 40 0" stroke="#12364e" stroke-width="7" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="eyes eyes-sad" style="display:none">
+        <ellipse cx="150" cy="201" rx="21" ry="19" fill="#ffffff" stroke="#145a78" stroke-width="3.5"/>
+        <circle cx="153" cy="206" r="9" fill="#12364e"/>
+        <circle cx="153" cy="206" r="4.4" fill="#081f2d"/>
+        <circle cx="156" cy="203" r="2.6" fill="#ffffff"/>
+        <path d="M130 190q20-9 40 0" stroke="#4a9ab5" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <ellipse cx="210" cy="201" rx="21" ry="19" fill="#ffffff" stroke="#145a78" stroke-width="3.5"/>
+        <circle cx="213" cy="206" r="9" fill="#12364e"/>
+        <circle cx="213" cy="206" r="4.4" fill="#081f2d"/>
+        <circle cx="216" cy="203" r="2.6" fill="#ffffff"/>
+        <path d="M190 190q20-9 40 0" stroke="#4a9ab5" stroke-width="4" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="eyes eyes-surprised" style="display:none">
+        <ellipse cx="150" cy="195" rx="24" ry="29" fill="#ffffff" stroke="#145a78" stroke-width="3.5"/>
+        <circle cx="153" cy="198" r="8" fill="#12364e"/>
+        <circle cx="153" cy="198" r="4" fill="#081f2d"/>
+        <circle cx="156" cy="194" r="2.8" fill="#ffffff"/>
+        <ellipse cx="210" cy="195" rx="24" ry="29" fill="#ffffff" stroke="#145a78" stroke-width="3.5"/>
+        <circle cx="213" cy="198" r="8" fill="#12364e"/>
+        <circle cx="213" cy="198" r="4" fill="#081f2d"/>
+        <circle cx="216" cy="194" r="2.8" fill="#ffffff"/>
+      </g>
+
+      <ellipse cx="122" cy="224" rx="13" ry="8" fill="#ff9fc4" opacity=".5"/>
+      <ellipse cx="238" cy="224" rx="13" ry="8" fill="#ff9fc4" opacity=".5"/>
+
+      <g class="mouth mouth-neutral">
+        <path d="M160 228q20 18 40 0" stroke="#145a78" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M170 232q10 6 20 0" stroke="#ff9fb0" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
+      </g>
+      <g class="mouth mouth-talk" style="display:none">
+        <ellipse cx="180" cy="230" rx="12" ry="10" fill="#134a63" stroke="#0d3446" stroke-width="2.5"/>
+        <path d="M172 234q8 6 16 0" fill="#ff8fb0"/>
+      </g>
+      <g class="mouth mouth-happy" style="display:none">
+        <path d="M154 225q26 30 52 0-26 12-52 0z" fill="#134a63" stroke="#0d3446" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M168 230q12 10 24 0-12 6-24 0z" fill="#ff8fb0" opacity=".85"/>
+      </g>
+      <g class="mouth mouth-sad" style="display:none">
+        <path d="M162 236q18-14 36 0" stroke="#145a78" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="mouth mouth-surprised" style="display:none">
+        <ellipse cx="180" cy="232" rx="9" ry="12" fill="#134a63" stroke="#0d3446" stroke-width="2.5"/>
+      </g>
+
+      <circle cx="106" cy="184" r="3.2" fill="#ffffff" opacity=".8"/>
+      <circle cx="252" cy="232" r="2.6" fill="#ffffff" opacity=".6"/>
+      <path d="M246 160l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#effeff" opacity=".9"/>
+      <path d="M104 272l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#effeff" opacity=".65"/>
+    </g>
+
+    <g class="sparkles">
+      <path class="sp sp1" d="M74 128l4 11 11 4-11 4-4 11-4-11-11-4 11-4z" fill="#c8fbff"/>
+      <path class="sp sp2" d="M292 154l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#ffe6a0"/>
+      <path class="sp sp3" d="M80 300l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#9ff6ff"/>
+      <circle class="sp sp4" cx="278" cy="290" r="5" fill="#bff9ff"/>
+      <circle class="sp sp5" cx="112" cy="104" r="4" fill="#ffe6a0"/>
+    </g>
+  </g>
+</svg>
