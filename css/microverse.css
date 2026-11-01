@@ -1,0 +1,523 @@
+/* =========================================================
+   MICROVERSE ESCAPE — the living cell world, the escape
+   portal, and the animated cast (NOVA · PIP · ORBIT).
+   ========================================================= */
+
+/* ---------- world brightness grows with every escape key ---------- */
+#app { --world-bright: .74; --world-tint: 190, 240, 255; }
+#app[data-progress='1'] { --world-bright: .82; }
+#app[data-progress='2'] { --world-bright: .9; }
+#app[data-progress='3'] { --world-bright: 1; }
+#app[data-progress='4'] { --world-bright: 1.08; }
+#app[data-progress='5'] { --world-bright: 1.15; }
+#app[data-progress='6'] { --world-bright: 1.24; }
+#app[data-scene='victory'] { --world-bright: 1.22; }
+#app.final-dim { --world-bright: .56; }
+#app.final-dim .world-vignette { opacity: 1; }
+
+/* =========================================================
+   The microscopic world behind every screen
+   ========================================================= */
+.world {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.world-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: brightness(var(--world-bright)) saturate(1.06);
+  transition: filter 1.2s ease;
+}
+.world-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(120% 90% at 50% 42%, rgba(0, 0, 0, 0) 38%, rgba(2, 5, 16, .62) 100%),
+    linear-gradient(180deg, rgba(3, 7, 22, .5), rgba(3, 7, 22, .12) 40%, rgba(2, 5, 16, .66));
+  opacity: calc(.96 - (var(--world-bright) - .7) * .5);
+  transition: opacity 1.2s ease;
+}
+.world-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: radial-gradient(70% 60% at 50% 46%, rgba(var(--world-tint), .1), rgba(var(--world-tint), 0) 70%);
+  opacity: calc((var(--world-bright) - .74) * 1.6);
+  transition: opacity 1.2s ease;
+}
+.dust-canvas, .fx-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.dust-canvas { z-index: 1; opacity: .85; }
+.fx-canvas { z-index: 96; }
+
+/* ---- drifting cytoplasm motes ---- */
+.ambient-bubbles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.ambient-bubbles span {
+  position: absolute;
+  bottom: -8vh;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .8), rgba(126, 232, 255, .28) 55%, rgba(60, 150, 220, .05) 100%);
+  box-shadow: 0 0 12px rgba(120, 225, 255, .35);
+  animation-name: moteRise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes moteRise {
+  0% { transform: translate3d(0, 0, 0) scale(.7); opacity: 0; }
+  12% { opacity: .85; }
+  100% { transform: translate3d(3vw, -112vh, 0) scale(1.12); opacity: 0; }
+}
+
+/* ---- backdrop life ---- */
+.cytoglow { transform-box: fill-box; transform-origin: center; animation: cytoBreath 11s ease-in-out infinite; }
+@keyframes cytoBreath {
+  0%, 100% { opacity: .5; transform: scale(1); }
+  50% { opacity: .82; transform: scale(1.05); }
+}
+.drift { transform-box: fill-box; transform-origin: center; animation: driftBob 16s ease-in-out infinite; }
+.drift.d2 { animation-duration: 21s; animation-delay: -6s; }
+.drift.d3 { animation-duration: 26s; animation-delay: -12s; }
+.drift.d4 { animation-duration: 19s; animation-delay: -3s; }
+@keyframes driftBob {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(14px, -18px) rotate(2deg); }
+  66% { transform: translate(-12px, 12px) rotate(-2.5deg); }
+}
+.er-rib { animation: erShimmer 7s ease-in-out infinite; }
+.er-rib:nth-child(2n) { animation-delay: -2.2s; }
+.er-rib:nth-child(3n) { animation-delay: -4.4s; }
+@keyframes erShimmer { 0%, 100% { opacity: .3; } 50% { opacity: .62; } }
+.mito-ring { transform-box: fill-box; transform-origin: center; animation: mitoPulse 5.4s ease-in-out infinite; }
+@keyframes mitoPulse {
+  0%, 100% { opacity: .45; transform: scale(1); }
+  50% { opacity: .8; transform: scale(1.04); }
+}
+.nucleolus { transform-box: fill-box; transform-origin: center; animation: corePulse 6.2s ease-in-out infinite; }
+@keyframes corePulse {
+  0%, 100% { opacity: .55; transform: scale(1); }
+  50% { opacity: .95; transform: scale(1.07); }
+}
+.twinkle { animation: twinkle 3.8s ease-in-out infinite; }
+.twinkle:nth-child(2n) { animation-delay: -1.3s; }
+.twinkle:nth-child(3n) { animation-delay: -2.6s; }
+@keyframes twinkle { 0%, 100% { opacity: .18; } 50% { opacity: .9; } }
+
+/* =========================================================
+   The escape portal — six arcs, one per collected key
+   ========================================================= */
+.portal { transform-box: fill-box; transform-origin: center; }
+.portal-halo { opacity: .1; transition: opacity 1.4s ease; }
+.portal-ring { transition: stroke 1.2s ease; }
+.pseg {
+  opacity: .1;
+  transition: opacity .9s ease, filter .9s ease;
+  filter: none;
+}
+.portal-core { transform-box: fill-box; transform-origin: center; opacity: .18; transition: opacity 1.2s ease; }
+.portal-node { transition: fill .8s ease, stroke .8s ease; }
+.portal-spin { transform-box: fill-box; transform-origin: center; }
+#world[data-keys='6'] .portal-spin { animation: portalSpin 5.5s linear infinite; }
+.portal-lock { opacity: .85; transition: opacity .8s ease; }
+.portal-spark { opacity: 0; transform-box: fill-box; transform-origin: center; }
+
+/* light the arcs in order as keys are collected */
+#world[data-keys='1'] .pseg:nth-of-type(-n+1),
+#world[data-keys='2'] .pseg:nth-of-type(-n+2),
+#world[data-keys='3'] .pseg:nth-of-type(-n+3),
+#world[data-keys='4'] .pseg:nth-of-type(-n+4),
+#world[data-keys='5'] .pseg:nth-of-type(-n+5),
+#world[data-keys='6'] .pseg { opacity: 1; filter: drop-shadow(0 0 10px rgba(120, 245, 255, .85)); }
+#world[data-keys='1'] .portal-halo { opacity: .18; }
+#world[data-keys='2'] .portal-halo { opacity: .26; }
+#world[data-keys='3'] .portal-halo { opacity: .38; }
+#world[data-keys='4'] .portal-halo { opacity: .5; }
+#world[data-keys='5'] .portal-halo { opacity: .64; }
+#world[data-keys='6'] .portal-halo { opacity: .85; }
+#world[data-keys='3'] .portal-core { opacity: .4; }
+#world[data-keys='4'] .portal-core { opacity: .58; }
+#world[data-keys='5'] .portal-core { opacity: .78; }
+#world[data-keys='6'] .portal-core { opacity: 1; animation: portalSpin 5.5s linear infinite; }
+#world[data-keys='6'] .portal-lock { opacity: 0; }
+#world[data-keys='6'] .portal-spark { opacity: 1; animation: portalSpark 1.5s ease-in-out infinite; }
+@keyframes portalSpin { to { transform: rotate(360deg); } }
+@keyframes portalSpark {
+  0%, 100% { opacity: .35; transform: scale(.86); }
+  50% { opacity: 1; transform: scale(1.14); }
+}
+.portal-beam { opacity: 0; transition: opacity 1.6s ease; }
+#world[data-keys='6'] .portal-beam { opacity: .5; }
+
+/* On the map the portal frames the six locks and shines through the panel */
+#app[data-scene='map'] .portal { transform: scale(1.62); }
+#app[data-scene='map'] .map-grid-glow {
+  background:
+    radial-gradient(circle at 50% 43%, rgba(9, 17, 38, 0) 0 21%, rgba(10, 20, 44, .58) 47%, rgba(7, 13, 30, .3) 100%),
+    radial-gradient(ellipse at 50% 40%, rgba(44, 92, 180, .16), transparent 68%);
+}
+#app[data-scene='map'] .pseg { stroke-width: 9; }
+#app[data-scene='map'] .portal-ring { stroke-opacity: .3; }
+#world[data-keys='0'] .pseg { opacity: .13; }
+
+/* =========================================================
+   Cast — animated WebP sprites
+   ========================================================= */
+.characters {
+  position: absolute;
+  inset: 0;
+  z-index: 46;
+  pointer-events: none;
+  direction: ltr;
+}
+.character {
+  position: absolute;
+  width: clamp(150px, 17vw, 250px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .55s ease, visibility .55s, left 1s cubic-bezier(.2, .8, .3, 1), right 1s cubic-bezier(.2, .8, .3, 1), bottom .8s ease, width .6s ease, transform .6s ease, filter .5s;
+  will-change: transform;
+  filter: drop-shadow(0 20px 26px rgba(0, 0, 0, .5));
+}
+.character > img.char-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+#app[data-scene='intro'] .character,
+#app[data-scene='map'] .character,
+#app[data-scene='mission'] .character,
+#app[data-scene='victory'] .character { opacity: 1; visibility: visible; }
+
+/* floating companions get a gentle extra lift on top of their sprite loop */
+.char-pip > img.char-img,
+.char-orbit > img.char-img { animation: companionHover 5.2s ease-in-out infinite; transform-origin: bottom center; }
+.char-orbit > img.char-img { animation-duration: 6.4s; animation-delay: -2s; }
+@keyframes companionHover {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* cinematic entrance: the cast arrives only when the world lights up */
+#app[data-scene='intro'].intro-hide-cast .character { opacity: 0 !important; visibility: hidden !important; }
+
+/* scene placement */
+#app[data-scene='intro'] .char-nova { right: 3.5vw; bottom: 1.5vh; width: clamp(165px, 19vw, 290px); }
+#app[data-scene='intro'] .char-pip { left: 4vw; bottom: 3vh; width: clamp(120px, 14vw, 205px); }
+#app[data-scene='intro'] .char-orbit { left: 27vw; bottom: 6vh; width: clamp(120px, 14vw, 200px); }
+
+#app[data-scene='map'] .char-nova { right: 1.2vw; bottom: -12px; width: clamp(140px, 15.5vw, 220px); }
+#app[data-scene='map'] .char-pip { left: 1vw; bottom: 12px; width: clamp(96px, 11vw, 150px); }
+#app[data-scene='map'] .char-orbit { left: 15vw; bottom: 20px; width: clamp(92px, 10.5vw, 140px); }
+
+#app[data-scene='mission'] .char-nova { right: .2vw; bottom: -8px; width: clamp(125px, 13vw, 195px); }
+#app[data-scene='mission'] .char-pip { left: 0; bottom: 6px; width: clamp(84px, 9.5vw, 132px); }
+#app[data-scene='mission'] .char-orbit { left: 11vw; bottom: 10px; width: clamp(80px, 9vw, 124px); }
+
+/* mission: HUD paints above the cast, captions stay above everything */
+#app[data-scene='mission'] .characters { z-index: auto; }
+#app[data-scene='mission'] .character { will-change: auto; filter: none; }
+#app[data-scene='mission'] .character > img.char-img { filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .5)); }
+
+#app[data-scene='victory'] .char-nova { right: 4vw; bottom: 0; width: clamp(175px, 21vw, 320px); }
+#app[data-scene='victory'] .char-pip { left: 4.5vw; bottom: 4vh; width: clamp(125px, 15vw, 215px); }
+#app[data-scene='victory'] .char-orbit { left: 21vw; bottom: 6vh; width: clamp(115px, 13vw, 190px); }
+
+/* ORBIT only joins the scene once it has been shown */
+.char-orbit { opacity: 0 !important; visibility: hidden !important; }
+.char-orbit.is-present { opacity: 1 !important; visibility: visible !important; }
+#app[data-scene='intro'] .char-orbit.is-present { opacity: .98 !important; }
+
+/* expression flourishes layered on top of the sprite loops */
+.character.is-happy > img.char-img { animation: happyHop .78s ease-in-out infinite; }
+@keyframes happyHop {
+  0%, 100% { transform: translateY(0); }
+  45% { transform: translateY(-16px) scale(1.02); }
+}
+.character.is-jump > img.char-img { animation: bigJump .95s cubic-bezier(.3, .9, .4, 1) 3; }
+@keyframes bigJump {
+  0%, 100% { transform: translateY(0) scale(1); }
+  20% { transform: translateY(6px) scale(1.06, .94); }
+  48% { transform: translateY(-54px) scale(.96, 1.04); }
+  72% { transform: translateY(0) scale(1.04, .96); }
+}
+.character.is-surprised > img.char-img { animation: surprisedShake .5s ease-in-out 3; }
+@keyframes surprisedShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-7px) rotate(-1deg); }
+  75% { transform: translateX(7px) rotate(1deg); }
+}
+.character.is-excited > img.char-img { animation: excitedBounce 1.1s ease-in-out infinite; }
+@keyframes excitedBounce {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50% { transform: rotate(4deg) translateY(-16px); }
+}
+.character.is-talking > img.char-img { filter: drop-shadow(0 0 22px rgba(120, 240, 255, .45)); }
+.character.is-present { transition-delay: 0s; }
+
+/* speech bubbles */
+.speech {
+  position: absolute;
+  bottom: calc(100% - 6px);
+  left: 50%;
+  width: clamp(200px, 22vw, 280px);
+  transform: translate(-50%, 12px) scale(.9);
+  transform-origin: 50% 100%;
+  padding: 13px 17px 14px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(10, 30, 52, .97), rgba(6, 16, 34, .97));
+  border: 1px solid rgba(95, 248, 230, .34);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(255, 255, 255, .08);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .28s ease, transform .34s cubic-bezier(.2, 1.2, .4, 1), visibility .28s;
+  pointer-events: none;
+  z-index: 50;
+}
+.speech::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  margin-left: -9px;
+  border: 10px solid transparent;
+  border-top-color: rgba(6, 16, 34, .97);
+  border-bottom: 0;
+}
+.speech.show { opacity: 1; visibility: visible; transform: translate(-50%, 0) scale(1); }
+.speech-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 4px;
+  letter-spacing: .02em;
+}
+.speech-name::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+.speech-text { display: block; font-size: clamp(12.5px, 1.15vw, 15px); line-height: 1.7; font-weight: 700; color: #eaf4ff; }
+.char-pip .speech { border-color: rgba(255, 209, 102, .45); }
+.char-pip .speech-name { color: #ffd166; }
+.char-orbit .speech { border-color: rgba(178, 141, 255, .45); }
+.char-orbit .speech-name { color: #c4a2ff; }
+.speech.bubble-only .speech-name { display: none; }
+
+/* edge characters: keep captions fully on screen */
+#app[data-scene='mission'] .char-pip .speech,
+#app[data-scene='map'] .char-pip .speech,
+#app[data-scene='mission'] .char-orbit .speech,
+#app[data-scene='map'] .char-orbit .speech {
+  left: 8px;
+  transform: translateY(12px) scale(.9);
+  transform-origin: 20% 100%;
+}
+#app[data-scene='mission'] .char-pip .speech.show,
+#app[data-scene='map'] .char-pip .speech.show,
+#app[data-scene='mission'] .char-orbit .speech.show,
+#app[data-scene='map'] .char-orbit .speech.show {
+  transform: translateY(0) scale(1);
+}
+#app[data-scene='mission'] .char-pip .speech::after,
+#app[data-scene='map'] .char-pip .speech::after,
+#app[data-scene='mission'] .char-orbit .speech::after,
+#app[data-scene='map'] .char-orbit .speech::after {
+  left: 30%;
+  margin-left: 0;
+}
+#app[data-scene='mission'] .char-nova .speech,
+#app[data-scene='map'] .char-nova .speech {
+  left: auto;
+  right: 8px;
+  transform: translateY(12px) scale(.9);
+  transform-origin: 80% 100%;
+}
+#app[data-scene='mission'] .char-nova .speech.show,
+#app[data-scene='map'] .char-nova .speech.show {
+  transform: translateY(0) scale(1);
+}
+#app[data-scene='mission'] .char-nova .speech::after,
+#app[data-scene='map'] .char-nova .speech::after {
+  left: auto;
+  right: 30%;
+  margin-left: 0;
+}
+
+/* =========================================================
+   Escape keys — map badges, completion reward, HUD
+   ========================================================= */
+.node-key {
+  position: absolute;
+  top: -12px;
+  left: -10px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff3cf, #ffd166 45%, #b57506 100%);
+  box-shadow: 0 0 0 2px rgba(8, 14, 32, .9), 0 6px 16px rgba(0, 0, 0, .5);
+  opacity: .22;
+  filter: grayscale(1);
+  transform: scale(.78);
+  transition: opacity .6s ease, filter .6s ease, transform .6s cubic-bezier(.2, 1.4, .4, 1);
+}
+.node-key svg { width: 19px; height: 19px; fill: #43290a; }
+.mission-node.is-done .node-key {
+  opacity: 1;
+  filter: none;
+  transform: scale(1);
+  animation: keyPop 2.8s ease-in-out infinite;
+}
+@keyframes keyPop {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-4px) rotate(6deg); }
+}
+
+.key-hud {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 209, 102, .4);
+  background: linear-gradient(180deg, rgba(48, 34, 6, .8), rgba(18, 14, 30, .8));
+  font-weight: 800;
+  font-size: 13px;
+  color: #ffe6a8;
+}
+.key-hud svg { width: 16px; height: 16px; fill: #ffd166; filter: drop-shadow(0 0 6px rgba(255, 209, 102, .7)); }
+
+.complete-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 2px 0 10px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 209, 102, .55);
+  background: radial-gradient(120% 160% at 50% 0%, rgba(255, 209, 102, .26), rgba(255, 209, 102, .05));
+  color: #ffe7ac;
+  font-weight: 900;
+  font-size: 15px;
+  opacity: 0;
+}
+.complete-key svg { width: 20px; height: 20px; fill: #ffd166; }
+.complete-key.earned { animation: keyReveal .9s cubic-bezier(.2, 1.5, .35, 1) .25s both; }
+@keyframes keyReveal {
+  0% { opacity: 0; transform: scale(.6) rotate(-14deg); }
+  60% { opacity: 1; transform: scale(1.12) rotate(6deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+/* ---------- small screens ---------- */
+@media (max-width: 1100px), (max-height: 700px) {
+  .character { width: clamp(120px, 14vw, 190px); }
+  #app[data-scene='mission'] .char-nova { width: clamp(105px, 12vw, 155px); right: -6px; }
+  #app[data-scene='mission'] .char-pip { width: clamp(74px, 8.5vw, 112px); left: -6px; }
+  #app[data-scene='mission'] .char-orbit { width: clamp(70px, 8vw, 106px); left: 9vw; }
+  .speech { width: clamp(180px, 26vw, 245px); padding: 11px 14px; }
+  .speech-text { font-size: 12px; line-height: 1.6; }
+  .node-key { width: 29px; height: 29px; }
+  .node-key svg { width: 16px; height: 16px; }
+}
+@media (max-height: 600px) {
+  .speech { bottom: calc(100% - 2px); }
+  #app[data-scene='map'] .char-nova { width: 130px; }
+  #app[data-scene='map'] .char-pip { width: 92px; }
+  #app[data-scene='map'] .char-orbit { width: 86px; }
+}
+
+/* =========================================================
+   Mission 6 — the escape-key tray and the portal sockets
+   ========================================================= */
+.key-tray {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0 4px;
+}
+.key-token {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 11px;
+  border-radius: 13px;
+  border: 1px solid rgba(255, 209, 102, .3);
+  background: linear-gradient(180deg, rgba(38, 30, 12, .72), rgba(18, 15, 8, .6));
+  color: #ffe6ad;
+  font: inherit;
+  font-size: clamp(10.5px, .82vw, 12.5px);
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: start;
+  cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, opacity .3s ease;
+}
+.key-token svg { width: 17px; height: 17px; flex: 0 0 auto; fill: #ffd166; filter: drop-shadow(0 0 6px rgba(255, 209, 102, .55)); }
+.key-token:hover { transform: translateY(-2px); border-color: rgba(255, 209, 102, .62); }
+.key-token.is-picked {
+  border-color: #78f5ff;
+  background: linear-gradient(180deg, rgba(12, 52, 68, .85), rgba(8, 26, 40, .7));
+  box-shadow: 0 0 0 1px rgba(120, 245, 255, .45), 0 10px 26px rgba(0, 0, 0, .4);
+}
+.key-token.is-picked svg { fill: #9ff7ff; animation: keyUrgent 1.5s ease-in-out infinite; }
+@keyframes keyUrgent {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-3px) rotate(-8deg); }
+}
+.key-token.is-seated { opacity: .34; cursor: default; filter: grayscale(.5); }
+.key-token.is-seated::after { content: '\2713'; margin-inline-start: auto; color: #7cf0c0; font-weight: 900; }
+
+.stage-label.socket {
+  border-color: rgba(120, 245, 255, .5);
+  background: rgba(6, 22, 38, .82);
+  max-width: 190px;
+}
+.stage-label.socket .l-ar { color: #d6f8ff; font-size: clamp(9.5px, .74vw, 11.5px); }
+
+/* ---------- skip affordance for voiced lines ----------
+   panels are pointer-events:none while a line plays, so the escape hatch
+   rides on the caption bar itself, outside every disabled container. */
+.dialog-skip {
+  position: absolute;
+  inset-inline-end: 0;
+  top: 0;
+  transform: translateY(calc(-100% - 8px));
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 99px;
+  border: 1px solid rgba(124, 172, 255, .34);
+  background: rgba(8, 16, 34, .92);
+  color: #cfe4ff;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease, border-color .18s ease, color .18s ease;
+}
+.dialog-skip .tiny-icon { width: 13px; height: 13px; fill: #8fd8ff; }
+.dialog-skip:hover { border-color: #78f5ff; color: #eafaff; }
+#app.dialog-mode[data-scene='mission'] .subtitle.show .dialog-skip {
+  opacity: .92;
+  pointer-events: auto;
+}

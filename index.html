@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#04081a">
+<title>MICROVERSE ESCAPE — THE CELLVERSE ADVENTURE | الهروب من العالم المجهري</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/microverse.css">
+<link rel="stylesheet" href="css/game.css">
+<link rel="stylesheet" href="css/stage.css">
+</head>
+<body>
+
+<svg class="svg-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 4.6c0-1.2 1.3-1.9 2.3-1.3l9.4 6.9c.9.7.9 2 0 2.7l-9.4 6.9c-1 .7-2.3 0-2.3-1.3z"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M14.2 3.1c2.9-1.6 6.1-1.2 6.1-1.2s.4 3.2-1.2 6.1c-1.2 2.2-3.1 4.5-5.6 6.5l-3.1-3.1c2-2.5 4.3-4.4 6.5-5.6zM8.9 12.9l2.2 2.2-1.4 1.4c-.4.4-1 .4-1.4 0l-1.3-1.3c-.4-.4-.4-1 0-1.4zM4.3 15.2c1.4-.5 2.6.1 3.3.8.8.8 1.3 2 .8 3.3-1.3.4-2.6-.1-3.3-.9-.8-.7-1.3-1.9-.8-3.2z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2-1.6a.7.7 0 0 0 .2-.9l-1.9-3.2a.7.7 0 0 0-.9-.3l-2.4 1a7.4 7.4 0 0 0-1.7-1L14.3 2a.7.7 0 0 0-.7-.6h-3.8a.7.7 0 0 0-.7.6l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.4-1a.7.7 0 0 0-.9.3L1.8 8.1a.7.7 0 0 0 .2.9L4 10.6a7.6 7.6 0 0 0 0 2l-2 1.6a.7.7 0 0 0-.2.9l1.9 3.2c.2.3.5.4.9.3l2.4-1c.5.4 1 .8 1.7 1l.4 2.6c0 .4.3.6.7.6h3.8c.4 0 .6-.2.7-.6l.4-2.6c.6-.2 1.2-.6 1.7-1l2.4 1c.3.1.7 0 .9-.3l1.9-3.2a.7.7 0 0 0-.2-.9zM12 15.3A3.3 3.3 0 1 1 12 8.7a3.3 3.3 0 0 1 0 6.6z"/></symbol>
+  <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9.5h3.4L12 5.4c.7-.6 1.7-.1 1.7.8v11.6c0 .9-1 1.4-1.7.8l-4.6-4.1H4a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm12.8-.9a1 1 0 0 1 1.4 0 5 5 0 0 1 0 6.8 1 1 0 1 1-1.4-1.4 3 3 0 0 0 0-4 1 1 0 0 1 0-1.4zm2.5-2.6a1 1 0 0 1 1.4 0 9 9 0 0 1 0 12 1 1 0 1 1-1.4-1.4 7 7 0 0 0 0-9.2 1 1 0 0 1 0-1.4z"/></symbol>
+  <symbol id="i-muted" viewBox="0 0 24 24"><path d="M4 9.5h3.4L12 5.4c.7-.6 1.7-.1 1.7.8v11.6c0 .9-1 1.4-1.7.8l-4.6-4.1H4a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm12 1.1 1.5-1.5 1.4 1.4-1.5 1.5 1.5 1.5-1.4 1.4-1.5-1.5-1.5 1.5-1.4-1.4 1.5-1.5-1.5-1.5 1.4-1.4z"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6.2 4.8 12 10.6l5.8-5.8 1.4 1.4L13.4 12l5.8 5.8-1.4 1.4L12 13.4l-5.8 5.8-1.4-1.4L10.6 12 4.8 6.2z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4-5.8-3-5.8 3 1.1-6.4L2.6 9.4l6.5-.9z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2h.5A2.5 2.5 0 0 1 20 12.5v6A2.5 2.5 0 0 1 17.5 21h-11A2.5 2.5 0 0 1 4 18.5v-6A2.5 2.5 0 0 1 6.5 10zm2 0h6V8a3 3 0 0 0-6 0z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M12 3.2 21 11h-2.6v8.2a1 1 0 0 1-1 1h-4.2v-5.6h-2.4v5.6H6.6a1 1 0 0 1-1-1V11H3z"/></symbol>
+  <symbol id="i-skip" viewBox="0 0 24 24"><path d="M4 5.7c0-.8.9-1.3 1.6-.9L13 9.4V5.7c0-.8.9-1.3 1.6-.9l7 4.8c.7.4.7 1.4 0 1.8l-7 4.8c-.7.4-1.6-.1-1.6-.9v-3.7l-7.4 4.6c-.7.4-1.6-.1-1.6-.9zM2 5h2v14H2z"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 4 12.7c-.7.5-1 1.1-1 1.9v.4H9v-.4c0-.8-.3-1.4-1-1.9A7 7 0 0 1 12 2zM9 19h6v1.2a1.8 1.8 0 0 1-1.8 1.8h-2.4A1.8 1.8 0 0 1 9 20.2z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M9.6 18.4 3.2 12l1.9-1.9 4.5 4.5L18.9 5.3l1.9 1.9z"/></symbol>
+  <symbol id="i-replay" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-7.4 5H2l3.5-4L9 9H6.6A6 6 0 1 0 12 6z"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 2.8 15 5l5.6-2.1c.5-.2 1.4.3 1.4.9v15.3c0 .4-.2.7-.6.9L15 22 9 19.8 3.4 21.9c-.5.2-1.4-.3-1.4-.9V5.7c0-.4.2-.7.6-.9zM10 4.6v13.1l4 1.5V6.1zM3.9 7.1v12.2L8 17.8V4.7zM16 5.9v13.2l3.9-1.5V5.2z"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8.2 2.7c.7 0 1.2.5 1.2 1.2v5.6h.8V3.3c0-.7.5-1.2 1.2-1.2s1.2.5 1.2 1.2v6.2h.8V4.8c0-.7.5-1.2 1.2-1.2s1.2.5 1.2 1.2v4.7h.8V6.7c0-.7.5-1.2 1.2-1.2s1.2.5 1.2 1.2v6.5c0 4.3-2.6 7.6-6.6 7.6-3.3 0-5.2-1.9-6.5-4.7l-1.4-3c-.2-.5-.3-.9-.1-1.4.3-.8 1.3-1.1 2-.6l1.3 1v-8c0-.7.5-1.2 1.2-1.2z"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="M20 3.3c0-.8-.7-1.4-1.5-1.2l-9 2.1c-.6.1-1 .6-1 1.2v10.4a3.5 3.5 0 1 0 2 3.2V8.6l7.6-1.8v5.5a3.5 3.5 0 1 0 1.9 3.1z"/></symbol>
+  <symbol id="i-cell" viewBox="0 0 24 24"><path d="M12 2.6c5.4 0 9.4 3.9 9.4 9.4S17.4 21.4 12 21.4 2.6 17.5 2.6 12 6.6 2.6 12 2.6zm0 2.1a7.3 7.3 0 1 0 0 14.6 7.3 7.3 0 0 0 0-14.6z"/><circle cx="12" cy="12" r="3.1"/></symbol>
+  <symbol id="i-membrane" viewBox="0 0 24 24"><path d="M3 6.6h18v3.1H3zm0 4.7h18v3.1H3zm0 4.7h18v3.1H3z" opacity=".55"/><circle cx="7" cy="6.4" r="1.5"/><circle cx="12" cy="6.4" r="1.5"/><circle cx="17" cy="6.4" r="1.5"/><circle cx="9.5" cy="16.2" r="1.5"/><circle cx="14.5" cy="16.2" r="1.5"/></symbol>
+  <symbol id="i-pump" viewBox="0 0 24 24"><path d="M4 10h5V4h6v6h5v4h-5v6H9v-6H4z"/><circle cx="12" cy="12" r="1.8" fill="#080d22"/></symbol>
+  <symbol id="i-water" viewBox="0 0 24 24"><path d="M12 2.4c3.6 4.3 6.6 7.9 6.6 11.3A6.6 6.6 0 0 1 12 21.6a6.6 6.6 0 0 1-6.6-7.9C5.4 10.3 8.4 6.7 12 2.4z"/></symbol>
+  <symbol id="i-vesicle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9.4" cy="10.2" r="1.3"/><circle cx="14.2" cy="9.6" r="1.1"/><circle cx="12.4" cy="14" r="1.2"/><circle cx="15.6" cy="13.4" r=".9"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24"><path d="M9 11a3.6 3.6 0 1 0 0-7.2A3.6 3.6 0 0 0 9 11zm7.6.2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2 20.2c0-3.7 2.9-6.2 7-6.2s7 2.5 7 6.2v1H2zm15.4 1v-1c0-2.4-.8-4.2-2.2-5.4.6-.1 1.2-.2 1.9-.2 3.4 0 6 2.2 6 5.4v1.2z"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 2.5h10v4H7zm-3 5h16a2 2 0 0 1 2 2v7h-4v-4H6v4H2v-7a2 2 0 0 1 2-2zm4 6h8v6H8z"/></symbol>
+  <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-7.4 5H2l3.5-4L9 9H6.6A6 6 0 1 0 12 6z"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><path d="M10.5 3a7.5 7.5 0 1 0 4.7 13.3l4.3 4.3 1.4-1.4-4.3-4.3A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm-1 2v2.5H7v2h2.5V14h2v-2.5H14v-2h-2.5V7z"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16zm0 3.4a4.6 4.6 0 1 0 0 9.2 4.6 4.6 0 0 0 0-9.2z"/></symbol>
+  <symbol id="i-cross" viewBox="0 0 24 24"><path d="M6.2 4.8 12 10.6l5.8-5.8 1.4 1.4L13.4 12l5.8 5.8-1.4 1.4L12 13.4l-5.8 5.8-1.4-1.4L10.6 12 4.8 6.2z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.6"/><path d="M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.5 4.9 5 3.5l2.1 2.1L5.6 7zM16.9 18.4l1.4-1.4 2.1 2.1-1.4 1.4zM3.5 19.1l2.1-2.1 1.4 1.4-2.1 2.1zM16.9 5.6l1.4-1.5 2.1 2.1-1.4 1.4z"/></symbol>
+  <symbol id="i-dna" viewBox="0 0 24 24"><path d="M7 2h2c0 4 6 4 6 8s-6 4-6 8h-2c0-4-6-4-6-8s6-4 6-8zm8 0h2c0 1.2-.5 2.2-1.3 3.1.5.5 1 1 1.3 1.6.4-1.4 2-1.7 2-4.7zM3 20h2c0-1.2.5-2.2 1.3-3.1-.5-.5-1-1-1.3-1.6C4.6 16.7 3 17 3 20zm11-16h2c0 4 6 4 6 8s-6 4-6 8h-2c0-4-6-4-6-8s6-4 6-8z" opacity=".0"/><path d="M8 2h1.8c0 2.4 1.4 3.8 2.8 5.2s2.8 2.8 2.8 5.2-1.4 3.8-2.8 5.2-2.8 2.8-2.8 5.2H8c0-2.4-1.4-3.8-2.8-5.2S2.4 14.8 2.4 12.4s1.4-3.8 2.8-5.2S8 4.4 8 2zm1.8 3.2c-.4 1.5-1 2.6-1.8 3.6h4.9c-.7-1-1.4-2.1-1.8-3.6zM7.1 10.4c.3.6.6 1.1 1 1.6h7.8c.4-.5.7-1 1-1.6zm1.3 3.6c-.4.5-.7 1-1 1.6h7.8c-.3-.6-.6-1.1-1-1.6zM8 15.2c.8 1 1.4 2.1 1.8 3.6.4-1.5 1.1-2.6 1.8-3.6z"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><path d="M8.6 2a6.4 6.4 0 0 1 2.6 12.25V17a2 2 0 0 1-2 2H8.8v2.2a.8.8 0 0 1-1.6 0V19H5.8v2.2a.8.8 0 0 1-1.6 0V16.4c0-1 .55-1.9 1.44-2.36A6.4 6.4 0 0 1 8.6 2zm0 3a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8zm0 1.5a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8z"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 2h12v3h4v3c0 3.2-2.2 5.6-5.2 6.4A6 6 0 0 1 13 17.8V20h4v2H7v-2h4v-2.2a6 6 0 0 1-3.8-3.4C4.2 13.6 2 11.2 2 8V5h4zm12 5v2c0 1.6-.7 3-1.8 3.9C18.3 12 20 10.2 20 8V7zM4 8c0 2.2 1.7 4 3.8 4.9C6.7 12 6 10.6 6 9V7z"/></symbol>
+</svg>
+
+<div id="app" data-scene="title" data-progress="0">
+
+  <div class="world" id="world" data-keys="0" aria-hidden="true">
+    <svg class="world-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="g-cyto" cx=".5" cy=".42" r=".78">
+          <stop offset="0" stop-color="#0d2b52"/>
+          <stop offset=".45" stop-color="#0a1c3d"/>
+          <stop offset="1" stop-color="#04081a"/>
+        </radialGradient>
+        <radialGradient id="g-cyto-glow" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#5ff8e6" stop-opacity=".3"/>
+          <stop offset="1" stop-color="#5ff8e6" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="g-mito" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1d6f8a" stop-opacity=".8"/>
+          <stop offset="1" stop-color="#0d3550" stop-opacity=".7"/>
+        </linearGradient>
+        <radialGradient id="g-nucleus" cx=".36" cy=".3" r=".8">
+          <stop offset="0" stop-color="#2f6fa8" stop-opacity=".8"/>
+          <stop offset="1" stop-color="#122a52" stop-opacity=".72"/>
+        </radialGradient>
+        <radialGradient id="g-portal" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#ffffff" stop-opacity=".92"/>
+          <stop offset=".32" stop-color="#7ef7ff" stop-opacity=".7"/>
+          <stop offset=".68" stop-color="#5ff8e6" stop-opacity=".3"/>
+          <stop offset="1" stop-color="#2b7fd6" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="g-halo" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#9ffcff" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#9ffcff" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="g-beam" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#8ff9ff" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#8ff9ff" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="f-soft" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="16"/>
+        </filter>
+      </defs>
+
+      <!-- cytoplasm field -->
+      <rect width="1600" height="900" fill="url(#g-cyto)"/>
+      <ellipse class="cytoglow" cx="800" cy="400" rx="720" ry="430" fill="url(#g-cyto-glow)"/>
+
+      <!-- cell membrane boundary -->
+      <path d="M80 450c0-190 260-350 720-350s720 160 720 350-250 380-720 380S80 640 80 450z"
+        fill="none" stroke="#4fe6ff" stroke-opacity=".16" stroke-width="7"/>
+      <path d="M104 450c0-176 246-328 696-328s696 152 696 328-242 356-696 356S104 626 104 450z"
+        fill="none" stroke="#7be7ff" stroke-opacity=".09" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/>
+
+      <!-- endoplasmic reticulum -->
+      <g class="drift d4" opacity=".75">
+        <path class="er-rib" d="M150 200 q34 -26 68 0 t68 0" fill="none" stroke="#6fd8ff" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+        <path class="er-rib" d="M150 234 q34 -26 68 0 t68 0" fill="none" stroke="#6fd8ff" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+        <path class="er-rib" d="M150 268 q34 -26 68 0 t68 0" fill="none" stroke="#6fd8ff" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+        <path class="er-rib" d="M150 302 q34 -26 68 0 t68 0" fill="none" stroke="#6fd8ff" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+        <path class="er-rib" d="M150 336 q34 -26 68 0 t68 0" fill="none" stroke="#6fd8ff" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+        <path class="er-rib" d="M150 370 q34 -26 68 0 t68 0" fill="none" stroke="#6fd8ff" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+        <path class="er-rib" d="M150 404 q34 -26 68 0 t68 0" fill="none" stroke="#6fd8ff" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+      </g>
+
+      <!-- nucleus -->
+      <g class="drift d2" transform="translate(1290 720)">
+        <circle r="118" fill="url(#g-nucleus)" stroke="#6fd8ff" stroke-opacity=".22" stroke-width="4"/>
+        <circle r="118" fill="none" stroke="#9ffcff" stroke-opacity=".14" stroke-width="2" stroke-dasharray="4 10"/>
+        <circle class="nucleolus" r="34" cx="14" cy="-10" fill="#ffd166" opacity=".5"/>
+      </g>
+
+      <!-- mitochondria -->
+      <g class="drift " transform="translate(250 640) rotate(18) scale(1.00)">
+        <ellipse rx="86" ry="40" fill="url(#g-mito)" stroke="#3ad2c8" stroke-opacity=".28" stroke-width="2"/>
+        <path class="mito-ring" d="M-62 6q22-26 44-4t44-4" fill="none" stroke="#7ff0e0" stroke-opacity=".4" stroke-width="4" stroke-linecap="round"/>
+        <path class="mito-ring" d="M-58 -12q24-20 46 0t44-2" fill="none" stroke="#7ff0e0" stroke-opacity=".26" stroke-width="3.4" stroke-linecap="round"/>
+      </g>
+      <g class="drift d2" transform="translate(1330 250) rotate(-26) scale(0.82)">
+        <ellipse rx="86" ry="40" fill="url(#g-mito)" stroke="#3ad2c8" stroke-opacity=".28" stroke-width="2"/>
+        <path class="mito-ring" d="M-62 6q22-26 44-4t44-4" fill="none" stroke="#7ff0e0" stroke-opacity=".4" stroke-width="4" stroke-linecap="round"/>
+        <path class="mito-ring" d="M-58 -12q24-20 46 0t44-2" fill="none" stroke="#7ff0e0" stroke-opacity=".26" stroke-width="3.4" stroke-linecap="round"/>
+      </g>
+      <g class="drift d3" transform="translate(1450 690) rotate(40) scale(0.70)">
+        <ellipse rx="86" ry="40" fill="url(#g-mito)" stroke="#3ad2c8" stroke-opacity=".28" stroke-width="2"/>
+        <path class="mito-ring" d="M-62 6q22-26 44-4t44-4" fill="none" stroke="#7ff0e0" stroke-opacity=".4" stroke-width="4" stroke-linecap="round"/>
+        <path class="mito-ring" d="M-58 -12q24-20 46 0t44-2" fill="none" stroke="#7ff0e0" stroke-opacity=".26" stroke-width="3.4" stroke-linecap="round"/>
+      </g>
+
+      <!-- cytoskeleton fibres -->
+      <g stroke="#5ff8e6" stroke-opacity=".1" stroke-width="2.4" fill="none">
+        <path d="M0 760q420-140 820-40t780-120"/>
+        <path d="M0 300q380 150 800 60t800 130"/>
+        <path d="M180 900q240-320 200-640"/>
+        <path d="M1240 0q-120 340 60 660"/>
+      </g>
+
+      <!-- ================= THE ESCAPE PORTAL ================= -->
+      <g class="portal">
+        <circle class="portal-halo" cx="800" cy="430" r="330" fill="url(#g-halo)" filter="url(#f-soft)"/>
+        <rect class="portal-beam" x="725" y="0" width="150" height="430" fill="url(#g-beam)"/>
+        <circle class="portal-ring" cx="800" cy="430" r="194" fill="none" stroke="#2e6f9c" stroke-opacity=".5" stroke-width="3"/>
+        <circle class="portal-ring" cx="800" cy="430" r="114" fill="none" stroke="#2e6f9c" stroke-opacity=".28" stroke-width="2" stroke-dasharray="6 12"/>
+        <g fill="none" stroke="url(#g-portal)" stroke-width="15" stroke-linecap="round">
+        <path class="pseg" d="M815.0 258.7 A172.0 172.0 0 0 1 940.9 331.3"/>
+        <path class="pseg" d="M955.9 357.3 A172.0 172.0 0 0 1 955.9 502.7"/>
+        <path class="pseg" d="M940.9 528.7 A172.0 172.0 0 0 1 815.0 601.3"/>
+        <path class="pseg" d="M785.0 601.3 A172.0 172.0 0 0 1 659.1 528.7"/>
+        <path class="pseg" d="M644.1 502.7 A172.0 172.0 0 0 1 644.1 357.3"/>
+        <path class="pseg" d="M659.1 331.3 A172.0 172.0 0 0 1 785.0 258.7"/>
+        </g>
+        <g fill="#0a2340" stroke="#7ef7ff" stroke-opacity=".5" stroke-width="2.5">
+        <circle class="portal-node" cx="869.0" cy="310.5" r="9"/>
+        <circle class="portal-node" cx="938.0" cy="430.0" r="9"/>
+        <circle class="portal-node" cx="869.0" cy="549.5" r="9"/>
+        <circle class="portal-node" cx="731.0" cy="549.5" r="9"/>
+        <circle class="portal-node" cx="662.0" cy="430.0" r="9"/>
+        <circle class="portal-node" cx="731.0" cy="310.5" r="9"/>
+        </g>
+        <circle class="portal-core" cx="800" cy="430" r="104" fill="url(#g-portal)"/>
+        <g class="portal-spin">
+          <circle cx="800" cy="430" r="58" fill="none" stroke="#d6feff" stroke-opacity=".55" stroke-width="3" stroke-dasharray="18 12"/>
+        </g>
+        <g fill="#eaffff">
+        <circle class="portal-spark" cx="1002.2" cy="469.3" r="5"/>
+        <circle class="portal-spark" cx="915.2" cy="600.8" r="5"/>
+        <circle class="portal-spark" cx="760.7" cy="632.2" r="5"/>
+        <circle class="portal-spark" cx="629.2" cy="545.2" r="5"/>
+        <circle class="portal-spark" cx="597.8" cy="390.7" r="5"/>
+        <circle class="portal-spark" cx="684.8" cy="259.2" r="5"/>
+        <circle class="portal-spark" cx="839.3" cy="227.8" r="5"/>
+        <circle class="portal-spark" cx="970.8" cy="314.8" r="5"/>
+        </g>
+        <g class="portal-lock" transform="translate(800 424)">
+          <rect x="-26" y="-4" width="52" height="40" rx="10" fill="#122a52" stroke="#8fb6d8" stroke-width="3"/>
+          <path d="M-14 -4v-12a14 14 0 0 1 28 0v12" fill="none" stroke="#8fb6d8" stroke-width="5"/>
+          <circle cx="0" cy="15" r="5" fill="#ffd166"/>
+        </g>
+      </g>
+
+      <!-- suspended matter -->
+      <circle class="twinkle" cx="723" cy="214" r="2.6" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="158" cy="134" r="3.7" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="252" cy="434" r="3.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1099" cy="279" r="1.7" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="948" cy="488" r="1.8" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="245" cy="624" r="2.7" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1218" cy="186" r="4.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1351" cy="702" r="3.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="186" cy="650" r="3.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="161" cy="286" r="1.7" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="332" cy="356" r="2.7" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1167" cy="180" r="3.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1207" cy="758" r="2.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1251" cy="644" r="3.3" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="822" cy="159" r="3.0" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="188" cy="637" r="1.8" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="481" cy="568" r="3.4" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="935" cy="381" r="2.8" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="988" cy="430" r="2.4" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="428" cy="775" r="3.6" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="227" cy="648" r="2.4" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1073" cy="411" r="3.5" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="649" cy="683" r="4.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="301" cy="584" r="2.7" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="760" cy="215" r="4.0" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="923" cy="100" r="4.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="218" cy="631" r="3.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="702" cy="408" r="3.4" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1277" cy="568" r="3.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="994" cy="130" r="3.8" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="612" cy="545" r="3.4" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="193" cy="122" r="3.5" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="694" cy="722" r="3.1" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1455" cy="516" r="2.3" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="850" cy="744" r="2.5" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1005" cy="423" r="2.0" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="299" cy="565" r="1.8" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="648" cy="192" r="3.5" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="874" cy="460" r="4.0" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="1076" cy="142" r="2.0" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="882" cy="622" r="2.3" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="340" cy="500" r="3.8" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="630" cy="783" r="2.7" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="794" cy="759" r="3.9" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="532" cy="214" r="1.8" fill="#c9f6ff" opacity=".4"/>
+      <circle class="twinkle" cx="369" cy="297" r="3.3" fill="#c9f6ff" opacity=".4"/>
+    </svg>
+
+    <div class="world-vignette"></div>
+    <div class="world-wash"></div>
+    <canvas id="dust" class="dust-canvas"></canvas>
+    <div class="ambient-bubbles" id="ambient-bubbles"></div>
+  </div>
+
+  <canvas id="fx" class="fx-canvas"></canvas>
+  <div class="characters" id="characters"></div>
+
+  <!-- ============ TITLE ============ -->
+  <section class="screen screen-title is-active" id="screen-title">
+    <div class="title-wrap">
+      <div class="title-badge">
+        <svg class="tiny-icon"><use href="#i-dna"/></svg>
+        <span>مغامرة العلوم الحيّة • MICROVERSE PROGRAM</span>
+      </div>
+      <h1 class="logo">
+        <span class="logo-en">MICRO<span class="logo-verse">VERSE</span></span>
+        <span class="logo-ar">MICROVERSE ESCAPE</span>
+        <span class="logo-ar logo-ar-sub">الهروب من العالم المجهري</span>
+      </h1>
+      <p class="title-sub">الصف التاسع • عالم مجهري تفاعلي • ست مهمات لفتح بوابة الهروب</p>
+      <button class="btn btn-gold btn-xl btn-start" data-action="start-adventure">
+        <svg class="btn-icon"><use href="#i-play"/></svg>
+        <span>ابدأ المغامرة</span>
+      </button>
+      <p class="title-note"><svg class="tiny-icon"><use href="#i-volume"/></svg> اضغط لتشغيل الصوت والموسيقى — كل الأصوات محفوظة داخل اللعبة</p>
+      <div class="title-cast">
+        <span>نوفا</span><i></i><span>بيب</span><i></i><span>أوربت</span>
+      </div>
+    </div>
+    <div class="title-cell-deco" aria-hidden="true">
+      <svg viewBox="0 0 320 320">
+        <defs>
+          <radialGradient id="tcell" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#8bf1ff" stop-opacity=".55"/><stop offset=".55" stop-color="#2f9fd8" stop-opacity=".18"/><stop offset="1" stop-color="#0b2a5c" stop-opacity=".06"/></radialGradient>
+          <radialGradient id="tnuc" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#ffd166" stop-opacity=".95"/><stop offset=".6" stop-color="#e08a16" stop-opacity=".65"/><stop offset="1" stop-color="#7a3d00" stop-opacity=".2"/></radialGradient>
+        </defs>
+        <circle cx="160" cy="160" r="140" fill="url(#tcell)" stroke="#4fe6ff" stroke-opacity=".35" stroke-width="2"/>
+        <circle cx="160" cy="160" r="132" fill="none" stroke="#4fe6ff" stroke-opacity=".18" stroke-dasharray="3 10" stroke-width="2"/>
+        <g class="title-cell-ring">
+          <ellipse cx="160" cy="160" rx="96" ry="44" fill="none" stroke="#7be7ff" stroke-opacity=".22" stroke-width="1.6" transform="rotate(-24 160 160)"/>
+          <ellipse cx="160" cy="160" rx="96" ry="44" fill="none" stroke="#8b6bff" stroke-opacity=".25" stroke-width="1.6" transform="rotate(38 160 160)"/>
+        </g>
+        <circle cx="160" cy="160" r="42" fill="url(#tnuc)" opacity=".85"/>
+        <g class="title-organelles">
+          <ellipse cx="86" cy="104" rx="20" ry="10" fill="#4be3a8" opacity=".7" transform="rotate(-28 86 104)"/>
+          <circle cx="240" cy="108" r="9" fill="#ff9f68" opacity=".8"/>
+          <circle cx="226" cy="226" r="13" fill="#8b6bff" opacity=".7"/>
+          <ellipse cx="104" cy="236" rx="16" ry="8" fill="#4fe6ff" opacity=".6" transform="rotate(22 104 236)"/>
+          <circle cx="262" cy="176" r="5" fill="#ffd166" opacity=".9"/>
+          <circle cx="68" cy="168" r="4" fill="#9ff5ff" opacity=".8"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ CINEMATIC INTRO ============ -->
+  <section class="screen screen-intro" id="screen-intro">
+    <div class="intro-top">
+      <div class="intro-chapter" id="intro-chapter">المشهد ١ • الحادث الذي صغّرنا</div>
+      <button class="pill-btn ghost" data-action="skip-intro">
+        <span>تخطّي المقدمة</span>
+        <svg class="tiny-icon"><use href="#i-skip"/></svg>
+      </button>
+    </div>
+
+    <div class="intro-monitor" id="intro-monitor">
+      <div class="monitor-frame">
+        <div class="monitor-head">
+          <span class="monitor-dot"></span>
+          <span>MICROVERSE TELEMETRY</span>
+          <span class="monitor-live">إشارة حيوية</span>
+        </div>
+        <div class="monitor-screen">
+          <svg viewBox="0 0 520 320" aria-hidden="true">
+            <defs>
+              <radialGradient id="mcell" cx=".42" cy=".36" r=".7"><stop offset="0" stop-color="#9ff5ff" stop-opacity=".75"/><stop offset=".55" stop-color="#2f9fd8" stop-opacity=".3"/><stop offset="1" stop-color="#0b2a5c" stop-opacity=".08"/></radialGradient>
+              <radialGradient id="mnuc" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#ffe6ad"/><stop offset="1" stop-color="#d08400"/></radialGradient>
+            </defs>
+            <g class="mon-grid" stroke="#4fe6ff" stroke-opacity=".13" stroke-width="1">
+              <path d="M0 60H520M0 120H520M0 180H520M0 240H520M80 0V320M180 0V320M280 0V320M380 0V320M480 0V320"/>
+            </g>
+            <circle cx="262" cy="160" r="104" fill="none" stroke="#4fe6ff" stroke-opacity=".45" stroke-width="2" stroke-dasharray="2 8"/>
+            <g class="mon-cell">
+              <circle cx="262" cy="160" r="92" fill="url(#mcell)" stroke="#7be7ff" stroke-opacity=".6" stroke-width="2"/>
+              <circle cx="262" cy="160" r="84" fill="none" stroke="#7be7ff" stroke-opacity=".2" stroke-width="1.4"/>
+              <circle cx="262" cy="160" r="30" fill="url(#mnuc)" opacity=".85"/>
+              <ellipse cx="206" cy="120" rx="16" ry="8" fill="#4be3a8" opacity=".75" transform="rotate(-25 206 120)"/>
+              <circle cx="318" cy="200" r="8" fill="#8b6bff" opacity=".8"/>
+              <ellipse cx="312" cy="112" rx="12" ry="6" fill="#4fe6ff" opacity=".7" transform="rotate(30 312 112)"/>
+              <circle cx="220" cy="212" r="6" fill="#ffd166" opacity=".85"/>
+            </g>
+            <g class="mon-wave" fill="none" stroke="#4fe6ff" stroke-width="2.5" stroke-linecap="round">
+              <path d="M34 278h28l10-22 14 44 12-30 10 8h32l12-16 14 26 12-10h44l10-18 12 28 12-10h48l10-20 12 32 12-12h70"/>
+            </g>
+            <text x="34" y="36" class="mon-text">SIGNAL 07 • UNKNOWN ORIGIN</text>
+            <text x="34" y="304" class="mon-text">LIVE SCAN — CELL INTERIOR</text>
+            <text x="420" y="304" class="mon-text">SECURE</text>
+          </svg>
+        </div>
+        <div class="monitor-foot">
+          <span>الجدار الخارجي: مستقر</span>
+          <span>النواة: نشطة</span>
+          <span class="monitor-alert">خلل غير معروف!</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-titlecard" id="intro-titlecard">
+      <p>انقطعت الطاقة... وانكمش العالم من حولنا</p>
+      <h2>MICROVERSE ESCAPE</h2>
+      <span class="intro-title-en">THE CELLVERSE ADVENTURE</span>
+    </div>
+
+    <div class="intro-flash" id="intro-flash"></div>
+
+    <div class="intro-cta" id="intro-cta" hidden>
+      <div class="urgent-badge"><span class="urgent-dot"></span> مهمة عاجلة!</div>
+      <h2>هل أنتم مستعدون للهروب من العالم المجهري؟</h2>
+      <p>أنتُم داخل خلية حيّة، وبوابة الخروج تالفة بستة أقفال. أصلحوا كل نظام لتحصلوا على مفتاحه.</p>
+      <button class="btn btn-gold btn-xl btn-start" data-action="enter-game">
+        <svg class="btn-icon"><use href="#i-rocket"/></svg>
+        <span>ابدأ المهمة</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ DIVE INTO THE CELL ============ -->
+  <section class="screen screen-dive" id="screen-dive">
+    <div class="intro3d" id="intro3d"></div>
+    <div class="dive-title" id="dive-title">
+      <span class="dive-kicker">MICROVERSE PROGRAM</span>
+      <h2>MICROVERSE ESCAPE</h2>
+      <p>THE CELLVERSE ADVENTURE</p>
+      <small>الدخول إلى العالم المجهري...</small>
+    </div>
+    <button class="pill-btn ghost dive-skip" data-action="skip-dive">
+      <span>تخطّي</span>
+      <svg class="tiny-icon"><use href="#i-skip"/></svg>
+    </button>
+  </section>
+
+  <!-- ============ MAP ============ -->
+  <section class="screen screen-map" id="screen-map">
+    <header class="top-bar">
+      <div class="brand-mini">
+        <span class="brand-glyph"><svg><use href="#i-cell"/></svg></span>
+        <div>
+          <b>MICROVERSE ESCAPE</b>
+          <small>الهروب من العالم المجهري</small>
+        </div>
+      </div>
+      <div class="map-hud-stats">
+        <label class="team-chip" title="اسم الفريق">
+          <svg class="tiny-icon"><use href="#i-team"/></svg>
+          <input id="team-input" type="text" maxlength="26" placeholder="اسم الفريق..." aria-label="اسم الفريق" autocomplete="off">
+        </label>
+        <div class="stat-chip" title="مفاتيح الهروب">
+          <svg class="tiny-icon gold"><use href="#i-key"/></svg>
+          <span id="map-star-count">٠ من ٦</span>
+        </div>
+        <div class="stat-chip lights-chip" id="lights-chip">
+          <span class="lamp-dot"></span>
+          <span id="lights-label">بوابة الهروب: مغلقة تمامًا</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="map-body">
+      <div class="map-heading">
+        <span class="mission-chip">خريطة المهمات</span>
+        <h2>أي قفل ستفتحون أولًا؟</h2>
+        <p id="map-sub">بوابة الهروب مطفأة... افتحوا القفل الأول لتصل إليها الطاقة.</p>
+        <div class="progress-dots" id="map-progress-dots"></div>
+      </div>
+
+      <div class="map-stage cell-map">
+        <div class="map-grid-glow"></div>
+        <svg class="cell-map-art" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <radialGradient id="mapCellGlow" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#16406e" stop-opacity=".42"/>
+              <stop offset=".7" stop-color="#0c2144" stop-opacity=".18"/>
+              <stop offset="1" stop-color="#071127" stop-opacity="0"/>
+            </radialGradient>
+            <pattern id="mapHex" width="64" height="56" patternUnits="userSpaceOnUse">
+              <path d="M32 2 60 18v32L32 60 4 44V18Z" fill="none" stroke="#6fdcff" stroke-opacity=".08" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <ellipse cx="600" cy="310" rx="660" ry="330" fill="url(#mapCellGlow)"/>
+          <ellipse cx="600" cy="310" rx="600" ry="300" fill="url(#mapHex)"/>
+          <ellipse cx="600" cy="310" rx="575" ry="286" fill="none" stroke="#4fe6ff" stroke-opacity=".16" stroke-width="2" stroke-dasharray="3 14"/>
+          <ellipse cx="600" cy="310" rx="548" ry="266" fill="none" stroke="#4fe6ff" stroke-opacity=".07" stroke-width="1"/>
+          <g class="map-nucleus" aria-hidden="true">
+            <circle cx="600" cy="310" r="74" fill="#ffd166" opacity=".07"/>
+            <circle cx="600" cy="310" r="58" fill="none" stroke="#ffd166" stroke-opacity=".16" stroke-width="1.5" stroke-dasharray="2 8"/>
+          </g>
+          <g class="map-organelles" aria-hidden="true" opacity=".45">
+            <ellipse cx="240" cy="470" rx="46" ry="22" fill="#4be3a8" opacity=".14"/>
+            <ellipse cx="960" cy="150" rx="42" ry="20" fill="#4be3a8" opacity=".12" transform="rotate(-22 960 150)"/>
+            <circle cx="180" cy="180" r="16" fill="#8b6bff" opacity=".18"/>
+            <circle cx="1020" cy="470" r="20" fill="#4fe6ff" opacity=".14"/>
+            <circle cx="860" cy="330" r="10" fill="#ff9f68" opacity=".22"/>
+            <circle cx="350" cy="250" r="9" fill="#ffd166" opacity=".2"/>
+          </g>
+        </svg>
+        <svg class="map-path" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true">
+          <path class="map-path-base" d="M1010 190 C 900 90, 760 100, 660 150 C 540 210, 500 190, 400 220 C 280 260, 260 330, 300 400 C 350 490, 500 520, 620 500 C 740 480, 800 430, 860 390 C 930 340, 960 290, 1010 260"/>
+          <path class="map-path-glow" d="M1010 190 C 900 90, 760 100, 660 150 C 540 210, 500 190, 400 220 C 280 260, 260 330, 300 400 C 350 490, 500 520, 620 500 C 740 480, 800 430, 860 390 C 930 340, 960 290, 1010 260"/>
+        </svg>
+        <div class="map-nodes" id="map-nodes"></div>
+        <div class="map-decor decor-cell" aria-hidden="true">
+          <svg viewBox="0 0 90 90"><circle cx="45" cy="45" r="38" fill="none" stroke="#3b6aa8" stroke-width="2"/><circle cx="45" cy="45" r="22" fill="none" stroke="#3b6aa8" stroke-width="1.4" stroke-dasharray="2 6"/><circle cx="45" cy="45" r="8" fill="#ffd166" opacity=".6"/></svg>
+        </div>
+        <div class="map-decor decor-star" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg></div>
+        <div class="map-decor decor-atoms" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="42" ry="16" fill="none" stroke="#3b6aa8" stroke-width="2" opacity=".7"/><ellipse cx="50" cy="50" rx="42" ry="16" fill="none" stroke="#3b6aa8" stroke-width="2" opacity=".7" transform="rotate(60 50 50)"/><ellipse cx="50" cy="50" rx="42" ry="16" fill="none" stroke="#3b6aa8" stroke-width="2" opacity=".7" transform="rotate(120 50 50)"/><circle cx="50" cy="50" r="7" fill="#ffd166"/></svg>
+        </div>
+      </div>
+
+      <div class="map-footer">
+        <button class="pill-btn ghost" data-action="replay-intro">
+          <svg class="tiny-icon"><use href="#i-replay"/></svg>
+          <span>إعادة المشهد الافتتاحي</span>
+        </button>
+        <p class="map-tip"><svg class="tiny-icon"><use href="#i-bulb"/></svg> اسحب الفأرة لتدوير أي مجسّم — وكل قفل تفتحه يمنحكم مفتاح هروب</p>
+        <button class="pill-btn ghost" data-action="show-certificate" id="cert-map-btn" hidden>
+          <svg class="tiny-icon"><use href="#i-trophy"/></svg>
+          <span>الشهادة</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MISSION ============ -->
+  <section class="screen screen-mission" id="screen-mission">
+    <header class="mission-hud">
+      <button class="icon-btn" data-action="to-map" aria-label="العودة إلى الخريطة" title="خريطة المهام">
+        <svg><use href="#i-map"/></svg>
+      </button>
+      <div class="mission-heading">
+        <span class="mission-chip" id="mission-chip">القفل الأول</span>
+        <h2 id="mission-title">مدينة العضيات</h2>
+        <p id="mission-goal">استكشفوا التراكيب وأعيدوا تشغيل قاعدة البيانات.</p>
+      </div>
+      <div class="mission-hud-actions">
+        <button class="pill-btn hint-btn" data-action="hint" aria-label="مساعدة">
+          <svg class="tiny-icon"><use href="#i-bulb"/></svg>
+          <span>مساعدة</span>
+        </button>
+        <button class="pill-btn teacher-btn" data-action="open-teacher" aria-label="أدوات المعلم">
+          <svg class="tiny-icon"><use href="#i-gear"/></svg>
+          <span>المعلم</span>
+        </button>
+        <div class="mission-steps" id="mission-steps"></div>
+      </div>
+    </header>
+
+    <div class="mission-body" id="mission-body">
+      <div class="stage3d" id="stage3d">
+        <div class="stage3d-glow"></div>
+        <div class="stage-labels" id="stage-labels"></div>
+        <div class="stage-overlay" id="stage-overlay"></div>
+        <div class="stage-readout" id="stage-readout"></div>
+      </div>
+      <aside class="mission-panel panel-start" id="panel-start"></aside>
+      <aside class="mission-panel panel-end" id="panel-end"></aside>
+      <div class="mission-bottom" id="mission-bottom"></div>
+      <div class="mission-toast" id="mission-toast"></div>
+      <div class="dialog-dim" id="dialog-dim"></div>
+    </div>
+
+    <div class="objective-bar" id="objective-bar">
+      <div class="objective-icon"><svg><use href="#i-target"/></svg></div>
+      <div class="objective-main">
+        <div class="objective-text" id="objective-text">ابدأوا باستكشاف التراكيب</div>
+        <div class="progress"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+      <div class="objective-count" id="objective-count">٠ من ٧</div>
+    </div>
+  </section>
+
+  <!-- ============ VICTORY ============ -->
+  <section class="screen screen-victory" id="screen-victory">
+    <div class="victory-rays" id="victory-rays"></div>
+    <div class="victory-particles" id="victory-particles"></div>
+    <div class="victory-inner">
+      <div class="victory-emblem">
+        <svg class="victory-star"><use href="#i-star"/></svg>
+        <span>MICROVERSE ESCAPE</span>
+      </div>
+      <div class="victory-badge-en">MICROVERSE ESCAPE COMPLETED</div>
+      <h1>لقد نجحتم في الهروب من العالم المجهري!</h1>
+      <p class="victory-sub">فتحتم الأقفال الستة، وأعدتم الطاقة إلى البوابة، وخرجتم من الخلية سالمين.</p>
+      <div class="victory-stars" id="victory-stars"></div>
+      <div class="victory-star-total" id="victory-star-total"></div>
+      <div class="key-hud victory-keys" id="victory-keys"><svg><use href="#i-key"/></svg><span>مفاتيح الهروب: ٠ من ٦</span></div>
+      <div class="victory-recap">
+        <div><b>التراكيب</b><span>سبعة تراكيب خلوية</span></div>
+        <div><b>الغشاء</b><span>ينظّم مرور المواد</span></div>
+        <div><b>النقل</b><span>بسيط • مُيسّر • نشط</span></div>
+        <div><b>الماء</b><span>ثلاث حالات توتر</span></div>
+        <div><b>الحويصلات</b><span>إدخال وإخراج خلوي</span></div>
+      </div>
+      <div class="victory-team" id="victory-team"></div>
+      <div class="victory-actions">
+        <button class="btn btn-gold" data-action="show-certificate">
+          <svg class="btn-icon"><use href="#i-trophy"/></svg>
+          <span>شهادة المستكشف المجهري</span>
+        </button>
+        <button class="pill-btn ghost" data-action="victory-map">
+          <svg class="tiny-icon"><use href="#i-map"/></svg>
+          <span>خريطة المهمات</span>
+        </button>
+        <button class="pill-btn ghost" data-action="replay-game">
+          <svg class="tiny-icon"><use href="#i-replay"/></svg>
+          <span>لعب من جديد</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPLETE OVERLAY ============ -->
+  <div class="overlay" id="overlay-complete" hidden>
+    <div class="complete-card">
+      <div class="complete-burst" id="complete-burst"></div>
+      <div class="complete-star" id="complete-star" aria-label="نجوم المهمة">
+        <svg class="cstar" viewBox="0 0 24 24"><use href="#i-star"/></svg>
+        <svg class="cstar" viewBox="0 0 24 24"><use href="#i-star"/></svg>
+        <svg class="cstar" viewBox="0 0 24 24"><use href="#i-star"/></svg>
+      </div>
+      <span class="complete-stars-label" id="complete-stars-label">النجوم: ٣ من ٣</span>
+      <div class="complete-key" id="complete-key"><svg><use href="#i-key"/></svg><span>مفتاح الهروب</span></div>
+      <span class="mission-chip" id="complete-chip">اكتملت المهمة</span>
+      <h2 id="complete-title">أحسنتم!</h2>
+      <p id="complete-text"></p>
+      <div class="learn-box">
+        <span class="learn-label"><svg class="tiny-icon"><use href="#i-bulb"/></svg> تعلّمنا</span>
+        <span id="complete-learn"></span>
+      </div>
+      <button class="btn btn-gold" data-action="next-mission" id="complete-next">
+        <span>المهمة التالية</span>
+        <svg class="btn-icon"><use href="#i-play"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============ TEACHER MENU ============ -->
+  <div class="settings-backdrop" id="teacher-backdrop" hidden></div>
+  <aside class="teacher-menu" id="teacher-menu" aria-hidden="true" aria-label="أدوات المعلم">
+    <div class="settings-head">
+      <div>
+        <h3>أدوات المعلم</h3>
+        <p>تحكّم كامل في سير الحصة</p>
+      </div>
+      <button class="icon-btn" data-action="close-teacher" aria-label="إغلاق">
+        <svg><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <div class="teacher-body">
+      <button class="teacher-row" data-action="pause">
+        <svg><use href="#i-pause"/></svg>
+        <div><b>إيقاف مؤقت</b><span>إيقاف اللعبة والصوت لشرح الفكرة</span></div>
+      </button>
+      <button class="teacher-row" data-action="restart-mission">
+        <svg><use href="#i-replay"/></svg>
+        <div><b>إعادة المهمة الحالية</b><span>البدء من أول خطوة في المهمة</span></div>
+      </button>
+      <button class="teacher-row" data-action="to-map">
+        <svg><use href="#i-map"/></svg>
+        <div><b>خريطة المهام</b><span>الانتقال بين المهمات المفتوحة</span></div>
+      </button>
+      <button class="teacher-row" data-action="skip-dialogue">
+        <svg><use href="#i-skip"/></svg>
+        <div><b>تخطّي الحوار</b><span>إسكات الحوار الحالي والمتابعة</span></div>
+      </button>
+      <button class="teacher-row" data-action="fullscreen">
+        <svg><use href="#i-zoom"/></svg>
+        <div><b>ملء الشاشة</b><span>عرض مثالي على البروجكتور</span></div>
+      </button>
+      <button class="teacher-row" data-action="open-settings">
+        <svg><use href="#i-gear"/></svg>
+        <div><b>إعدادات الصوت</b><span>مستوى الموسيقى والمؤثرات والأصوات</span></div>
+      </button>
+      <div class="settings-divider"></div>
+      <button class="teacher-row danger" data-action="reset-progress">
+        <svg><use href="#i-cross"/></svg>
+        <div><b>إعادة اللعبة من البداية</b><span>حذف التقدّم والنجوم والبدء من جديد</span></div>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============ PAUSE ============ -->
+  <div class="overlay pause-overlay" id="overlay-pause" hidden>
+    <div class="pause-card">
+      <div class="pause-icon"><svg><use href="#i-pause"/></svg></div>
+      <h2>توقف مؤقت</h2>
+      <p>المهمة متوقفة. خذوا وقتكم في المناقشة.</p>
+      <div class="pause-actions">
+        <button class="btn btn-gold" data-action="resume">
+          <svg class="btn-icon"><use href="#i-play"/></svg>
+          <span>متابعة</span>
+        </button>
+        <button class="pill-btn ghost" data-action="restart-mission"><svg class="tiny-icon"><use href="#i-replay"/></svg><span>إعادة المهمة</span></button>
+        <button class="pill-btn ghost" data-action="to-map"><svg class="tiny-icon"><use href="#i-map"/></svg><span>خريطة المهمات</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CERTIFICATE ============ -->
+  <div class="overlay certificate-overlay" id="overlay-certificate" hidden>
+    <div class="certificate-wrap">
+      <div class="certificate" id="certificate">
+        <div class="cert-frame">
+          <div class="cert-glow"></div>
+          <div class="cert-head">
+            <span class="cert-brand">MICROVERSE ESCAPE</span>
+            <span class="cert-brand-sub">THE CELLVERSE ADVENTURE</span>
+          </div>
+          <div class="cert-emblem">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#4fe6ff" stroke-opacity=".5" stroke-width="2" stroke-dasharray="3 7"/>
+              <circle cx="60" cy="60" r="38" fill="rgba(79,230,255,.07)" stroke="#4fe6ff" stroke-opacity=".7" stroke-width="1.6"/>
+              <circle cx="60" cy="60" r="15" fill="#ffd166" opacity=".9"/>
+              <circle cx="38" cy="44" r="5" fill="#4be3a8"/>
+              <circle cx="82" cy="74" r="4" fill="#8b6bff"/>
+              <circle cx="84" cy="42" r="3" fill="#4fe6ff"/>
+              <ellipse cx="60" cy="60" rx="34" ry="14" fill="none" stroke="#7be7ff" stroke-opacity=".5" stroke-width="1.2" transform="rotate(-24 60 60)"/>
+            </svg>
+            <svg class="cert-star"><use href="#i-star"/></svg>
+          </div>
+          <h2>شهادة المستكشف المجهري</h2>
+          <p class="cert-sub">MASTER MICROSCOPIC EXPLORERS</p>
+          <p class="cert-line">نشهد بأن الفريق</p>
+          <div class="cert-team" id="cert-team">فريق المستكشفين</div>
+          <p class="cert-body">قد أكمل مغامرة <b>MICROVERSE ESCAPE</b> بنجاح، وفتح أقفال بوابة الهروب الستة داخل خلية حيّة، وأظهر فهمًا لتراكيب الخلية ووظائفها، والغشاء البلازمي، وآليات نقل المواد، والخاصية الأسموزية، والإدخال الخلوي والإخراج الخلوي.</p>
+          <div class="cert-stats">
+            <div><span>المهمات المكتملة</span><b id="cert-missions">٦ من ٦</b></div>
+            <div><span>مفاتيح الهروب</span><b id="cert-keys">٦ من ٦</b></div>
+            <div><span>النجوم الذهبية</span><b id="cert-stars">٦</b></div>
+            <div><span>التاريخ</span><b id="cert-date">—</b></div>
+          </div>
+          <div class="cert-achievement">MASTER MICROSCOPIC EXPLORERS</div>
+          <div class="cert-foot">
+            <span>MICROVERSE EXPLORATION PROGRAM</span>
+            <span id="cert-code">MV-0000</span>
+          </div>
+        </div>
+      </div>
+      <div class="certificate-actions">
+        <button class="btn btn-gold" data-action="print-certificate">
+          <svg class="btn-icon"><use href="#i-print"/></svg>
+          <span>طباعة / حفظ PDF</span>
+        </button>
+        <button class="pill-btn ghost" data-action="close-certificate">
+          <svg class="tiny-icon"><use href="#i-close"/></svg>
+          <span>إغلاق</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ AUDIO ============ -->
+  <div class="audio-dock">
+    <button class="dock-btn" data-action="open-settings" aria-label="إعدادات الصوت" title="إعدادات الصوت">
+      <svg><use href="#i-gear"/></svg>
+    </button>
+    <button class="dock-btn" data-action="toggle-mute" id="mute-btn" aria-label="كتم الصوت" title="كتم الصوت" aria-pressed="false">
+      <svg><use href="#i-volume"/></svg>
+    </button>
+    <button class="dock-btn" data-action="fullscreen" aria-label="ملء الشاشة" title="ملء الشاشة">
+      <svg><use href="#i-zoom"/></svg>
+    </button>
+    <button class="dock-btn" data-action="open-teacher" aria-label="أدوات المعلم" title="أدوات المعلم">
+      <svg><use href="#i-pause"/></svg>
+    </button>
+  </div>
+
+  <div class="settings-backdrop" id="settings-backdrop" hidden></div>
+  <aside class="settings" id="settings" aria-hidden="true" aria-label="إعدادات الصوت">
+    <div class="settings-head">
+      <div>
+        <h3>إعدادات الصوت</h3>
+        <p>تحكّم كامل بالموسيقى والأصوات</p>
+      </div>
+      <button class="icon-btn" data-action="close-settings" aria-label="إغلاق">
+        <svg><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <div class="settings-body">
+      <div class="setting-row">
+        <div class="setting-label"><span>الصوت العام</span><output id="out-master">90%</output></div>
+        <input id="vol-master" type="range" min="0" max="100" step="1" value="90" data-audio="master" aria-label="الصوت العام">
+      </div>
+      <div class="setting-row">
+        <div class="setting-label"><svg class="tiny-icon"><use href="#i-music"/></svg><span>الموسيقى</span><output id="out-music">55%</output></div>
+        <input id="vol-music" type="range" min="0" max="100" step="1" value="55" data-audio="music" aria-label="الموسيقى">
+      </div>
+      <div class="setting-row">
+        <div class="setting-label"><svg class="tiny-icon"><use href="#i-volume"/></svg><span>المؤثرات الصوتية</span><output id="out-sfx">85%</output></div>
+        <input id="vol-sfx" type="range" min="0" max="100" step="1" value="85" data-audio="sfx" aria-label="المؤثرات الصوتية">
+      </div>
+      <div class="setting-row">
+        <div class="setting-label"><svg class="tiny-icon"><use href="#i-hand"/></svg><span>أصوات الشخصيات</span><output id="out-voice">95%</output></div>
+        <input id="vol-voice" type="range" min="0" max="100" step="1" value="95" data-audio="voice" aria-label="أصوات الشخصيات">
+      </div>
+
+      <div class="toggle-row">
+        <span>تشغيل الموسيقى</span>
+        <button class="switch" data-toggle="musicOn" role="switch" aria-checked="true" aria-label="تشغيل الموسيقى"><i></i></button>
+      </div>
+      <div class="toggle-row">
+        <span>كتم كل الأصوات</span>
+        <button class="switch" data-toggle="muted" role="switch" aria-checked="false" aria-label="كتم كل الأصوات"><i></i></button>
+      </div>
+
+      <button class="pill-btn test-btn" data-action="test-audio">
+        <svg class="tiny-icon"><use href="#i-volume"/></svg>
+        <span>تجربة الصوت</span>
+      </button>
+
+      <div class="audio-note" id="audio-note">جارٍ فحص أصوات الشخصيات...</div>
+
+      <div class="settings-divider"></div>
+      <div class="mini-setting">
+        <span>إعادة ضبط تقدّم المهام</span>
+        <button class="pill-btn danger small" data-action="reset-progress">إعادة الضبط</button>
+      </div>
+      <p class="settings-foot">الموسيقى والمؤثرات تُصنع داخل الجهاز، وأصوات نوفا وبيب وأوربت العربية محفوظة داخل اللعبة — كلها تعمل دون إنترنت.</p>
+    </div>
+  </aside>
+
+  <div class="subtitle" id="subtitle">
+    <span aria-live="polite"></span>
+    <button class="dialog-skip" type="button" data-action="skip-dialogue" tabindex="-1" aria-label="تخطّي الحوار">
+      <svg class="tiny-icon"><use href="#i-skip"/></svg>
+      <span class="dialog-skip-label">تخطّي الحوار</span>
+    </button>
+  </div>
+  <div class="toast-layer" id="toast-layer"></div>
+  <div class="screen-flash" id="screen-flash"></div>
+  <div class="fatal" id="fatal" hidden>
+    <div>
+      <h2>تعذّر تشغيل اللعبة</h2>
+      <p id="fatal-msg">حدث خطأ غير متوقع.</p>
+    </div>
+  </div>
+</div>
+
+<script src="js/vendor/three.min.js"></script>
+<script src="js/core/audio-engine.js"></script>
+<script src="js/core/music.js"></script>
+<script src="js/core/sfx.js"></script>
+<script src="js/core/voice-manifest.js"></script>
+<script src="js/core/voice.js"></script>
+<script src="js/core/fx.js"></script>
+<script src="js/core/characters.js"></script>
+<script src="js/core/ui.js"></script>
+<script src="js/core/progress.js"></script>
+<script src="js/core/stage3d.js"></script>
+<script src="js/data/content.js"></script>
+<script src="js/missions/_shared.js"></script>
+<script src="js/missions/m1-city.js"></script>
+<script src="js/missions/m2-membrane.js"></script>
+<script src="js/missions/m3-transport.js"></script>
+<script src="js/missions/m4-osmosis.js"></script>
+<script src="js/missions/m5-vesicles.js"></script>
+<script src="js/missions/m6-final.js"></script>
+<script src="js/core/app.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

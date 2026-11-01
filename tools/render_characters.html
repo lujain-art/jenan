@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MICROVERSE character frame renderer</title>
+<style>
+  html, body { margin: 0; padding: 0; background: transparent; width: 480px; height: 640px; overflow: hidden; }
+  #stage { position: relative; width: 480px; height: 640px; }
+  #stage svg { width: 480px; height: 640px; display: block; overflow: visible; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+(function () {
+  'use strict';
+  const params = new URLSearchParams(location.search);
+  const char = params.get('char') || 'nova';
+  const rootCache = {};
+  const loader = document.getElementById('stage');
+
+  const FRAMES = { idle: 16, talk: 8, happy: 12, sad: 12, surprised: 10, wave: 12 };
+  const MOUTH = { idle: 'neutral', talk: 'talk', happy: 'happy', sad: 'sad', surprised: 'surprised', wave: 'happy' };
+  const EYES = { idle: 'neutral', talk: 'neutral', happy: 'happy', sad: 'sad', surprised: 'surprised', wave: 'happy' };
+  const BROWS = { idle: 'neutral', talk: 'neutral', happy: 'happy', sad: 'sad', surprised: 'surprised', wave: 'happy' };
+
+  function q(root, sel) { return root.querySelector(sel); }
+  function setTransform(root, sel, value) {
+    const el = q(root, sel);
+    if (el) el.setAttribute('transform', value);
+  }
+  function setDisplay(root, sel, show) {
+    root.querySelectorAll(sel).forEach((el) => { el.style.display = show ? '' : 'none'; });
+  }
+  function rot(deg, cx, cy) { return 'rotate(' + deg.toFixed(2) + ' ' + cx + ' ' + cy + ')'; }
+  function tr(x, y) { return 'translate(' + x.toFixed(2) + ' ' + y.toFixed(2) + ')'; }
+  function scaleAt(sx, sy, cx, cy) {
+    return 'translate(' + cx + ' ' + cy + ') scale(' + sx.toFixed(3) + ' ' + sy.toFixed(3) + ') translate(' + (-cx) + ' ' + (-cy) + ')';
+  }
+
+  function expr(root, state) {
+    setDisplay(root, '.eyes', false);
+    setDisplay(root, '.eyes-' + EYES[state], true);
+    setDisplay(root, '.mouth', false);
+    setDisplay(root, '.mouth-' + MOUTH[state], true);
+    setDisplay(root, '.brows', false);
+    setDisplay(root, '.brows-' + BROWS[state], true);
+  }
+
+  function nova(root, state, f, n) {
+    const p = (f / n) * Math.PI * 2;
+    expr(root, state);
+    let bob = -3.5 * (1 - Math.cos(p)) / 2;
+    let head = Math.sin(p) * 2.2;
+    let armR = Math.sin(p) * 2;
+    let armL = -Math.sin(p) * 2;
+    let eyeSy = 1;
+    let eyeX = 1;
+    let eyeY = 0;
+    let talk = 0;
+    if (state === 'talk') {
+      bob = -1.5 * (1 - Math.cos(p)) / 2;
+      head = Math.sin(p * 2) * 1.6;
+      armR = -4 + Math.sin(p * 2) * 9;
+      armL = -6 + Math.sin(p * 2 + 1) * 8;
+      talk = 0.52 + 0.62 * Math.abs(Math.sin(p * 2));
+      if (f === 6) eyeSy = 0.22;
+    } else if (state === 'happy') {
+      bob = -Math.abs(Math.sin(p * 2)) * 12;
+      head = Math.sin(p * 3) * 4;
+      armR = 12 + Math.sin(p * 2) * 26;
+      armL = -10 - Math.sin(p * 2) * 22;
+    } else if (state === 'sad') {
+      bob = 5 + Math.sin(p) * 1.5;
+      head = 5 + Math.sin(p) * 1.2;
+      armR = 8 + Math.sin(p) * 2;
+      armL = -4 + Math.sin(p + 1) * 2;
+      eyeSy = 0.82;
+      eyeY = 2;
+    } else if (state === 'surprised') {
+      bob = -Math.abs(Math.sin(p * 2)) * 6;
+      head = Math.sin(p * 6) * 4;
+      armR = -22;
+      armL = 18;
+      eyeX = 1.06;
+    } else if (state === 'wave') {
+      bob = -3 + Math.sin(p) * 2;
+      head = Math.sin(p * 2) * 2;
+      armR = -12 + Math.sin(p * 3) * 24;
+      armL = -Math.sin(p) * 3;
+      if (f === 5) eyeSy = 0.22;
+    } else {
+      if (f === 13 || f === 14) eyeSy = 0.2;
+    }
+    setTransform(root, '.body-bob', tr(0, bob));
+    setTransform(root, '.head', rot(head, 230, 300));
+    setTransform(root, '.arm-r', rot(armR, 294, 318));
+    setTransform(root, '.arm-l', rot(armL, 166, 318));
+    const eyeScale = 'translate(230 204) scale(' + eyeX + ' ' + eyeSy + ') translate(-230 ' + (-204 - eyeY) + ')';
+    setTransform(root, '.eyes:not([style*="none"])', eyeScale);
+    const talkEl = q(root, '.mouth-talk');
+    if (talkEl) talkEl.setAttribute('transform', talk ? scaleAt(1, talk, 230, 252) : '');
+    const core = q(root, '.pack-core');
+    if (core) core.setAttribute('opacity', (0.4 + 0.22 * Math.sin(p * 2)).toFixed(3));
+  }
+
+  function pip(root, state, f, n) {
+    const p = (f / n) * Math.PI * 2;
+    expr(root, state);
+    let bob = -10 * Math.sin(p) - 2;
+    let sx = 1 + 0.025 * Math.sin(p + 1);
+    let sy = 1 - 0.025 * Math.sin(p + 1);
+    let finL = -8 * Math.sin(p * 2 + 1);
+    let finR = 8 * Math.sin(p * 2);
+    let eyeSy = 1;
+    let talk = 0;
+    let ring = p * 10;
+    if (state === 'talk') {
+      bob = -6 * Math.sin(p * 2) - 2;
+      sx = 1 + 0.05 * Math.sin(p * 2);
+      sy = 1 - 0.05 * Math.sin(p * 2);
+      finL = -14 * Math.sin(p * 2 + 1);
+      finR = 14 * Math.sin(p * 2);
+      talk = 0.5 + 0.7 * Math.abs(Math.sin(p * 2));
+      if (f === 6) eyeSy = 0.22;
+      ring = p * 16;
+    } else if (state === 'happy') {
+      bob = -Math.abs(Math.sin(p * 2)) * 18;
+      sx = 1 + 0.06 * Math.abs(Math.sin(p * 2));
+      sy = 1 - 0.05 * Math.abs(Math.sin(p * 2));
+      finL = -22 - Math.sin(p * 2) * 10;
+      finR = 22 + Math.sin(p * 2) * 10;
+      ring = p * 28;
+    } else if (state === 'sad') {
+      bob = 8 + Math.sin(p) * 2;
+      sx = 0.97;
+      sy = 0.97;
+      finL = 14 + Math.sin(p) * 3;
+      finR = -14 - Math.sin(p) * 3;
+      eyeSy = 0.82;
+      ring = p * 4;
+    } else if (state === 'surprised') {
+      bob = -4 + Math.sin(p * 5) * 5;
+      sx = 1.08;
+      sy = 1.08;
+      finL = -28;
+      finR = 28;
+      ring = p * 22;
+    } else {
+      if (f === 13 || f === 14) eyeSy = 0.2;
+    }
+    setTransform(root, '.body-bob', tr(0, bob));
+    setTransform(root, '.pip-body', scaleAt(sx, sy, 180, 205));
+    setTransform(root, '.fin-l', rot(finL, 98, 208));
+    setTransform(root, '.fin-r', rot(finR, 262, 208));
+    setTransform(root, '.ring-group', rot(ring, 180, 214));
+    setTransform(root, '.eyes:not([style*="none"])', scaleAt(1, eyeSy, 180, 196));
+    const talkEl = q(root, '.mouth-talk');
+    if (talkEl) talkEl.setAttribute('transform', talk ? scaleAt(1, talk, 180, 230) : '');
+    root.querySelectorAll('.sp').forEach((sp, i) => {
+      sp.setAttribute('opacity', (0.45 + 0.5 * Math.abs(Math.sin(p * 2 + i * 1.3))).toFixed(3));
+    });
+  }
+
+  function orbit(root, state, f, n) {
+    const p = (f / n) * Math.PI * 2;
+    expr(root, state);
+    let bob = -8 * Math.sin(p) - 3;
+    let tilt = Math.sin(p) * 2;
+    let eyeSy = 1;
+    let eyeX = 1;
+    let scanY = (f / n) * 118 - 55;
+    let ring = p * 20;
+    let antenna = Math.sin(p) * 5;
+    if (state === 'talk') {
+      bob = -5 * Math.sin(p * 2) - 3;
+      tilt = Math.sin(p * 2) * 1.6;
+      scanY = (f / n) * 118 - 55;
+      ring = p * 26;
+      antenna = Math.sin(p * 2) * 7;
+      if (f === 6) eyeSy = 0.22;
+    } else if (state === 'happy') {
+      bob = -Math.abs(Math.sin(p * 2)) * 14;
+      tilt = Math.sin(p * 3) * 4;
+      ring = p * 40;
+      antenna = Math.sin(p * 3) * 12;
+    } else if (state === 'sad') {
+      bob = 8 + Math.sin(p) * 2;
+      tilt = 4 + Math.sin(p);
+      ring = p * 6;
+      antenna = 12 + Math.sin(p) * 2;
+      eyeSy = 0.8;
+    } else if (state === 'surprised') {
+      bob = -4 + Math.sin(p * 5) * 5;
+      tilt = Math.sin(p * 7) * 5;
+      ring = p * 34;
+      antenna = Math.sin(p * 7) * 16;
+      eyeX = 1.08;
+      eyeSy = 1.08;
+    } else {
+      if (f === 13 || f === 14) eyeSy = 0.2;
+    }
+    setTransform(root, '.body-bob', tr(0, bob));
+    setTransform(root, '.orbit-body', rot(tilt, 190, 245));
+    setTransform(root, '.ring-group', rot(ring, 190, 245));
+    setTransform(root, '.antenna', rot(antenna, 190, 148));
+    setTransform(root, '.scanline', tr(0, scanY));
+    setTransform(root, '.eyes:not([style*="none"])', scaleAt(eyeX, eyeSy, 190, 218));
+    const bars = root.querySelectorAll('.mouth-talk .bar');
+    bars.forEach((bar, i) => {
+      const h = 9 + 18 * Math.abs(Math.sin(p * 2 + i * 0.8));
+      bar.setAttribute('height', h.toFixed(2));
+      bar.setAttribute('y', (262 - h).toFixed(2));
+    });
+    const tip = q(root, '.antenna-tip');
+    if (tip) tip.setAttribute('opacity', (0.62 + 0.36 * Math.sin(p * 3)).toFixed(3));
+    const thrust = q(root, '.thrust-glow');
+    if (thrust) thrust.setAttribute('opacity', (0.55 + 0.28 * Math.sin(p * 2)).toFixed(3));
+    const chest = q(root, '.chest-light');
+    if (chest) chest.setAttribute('opacity', (0.6 + 0.35 * Math.sin(p * 2 + 1)).toFixed(3));
+  }
+
+  function applyFrame(state, f, n) {
+    const root = document.getElementById('char-' + char);
+    if (!root) return;
+    if (char === 'nova') nova(root, state, f, n);
+    else if (char === 'pip') pip(root, state, f, n);
+    else orbit(root, state, f, n);
+  }
+
+  async function boot() {
+    const res = await fetch('../assets/characters/' + char + '.svg');
+    loader.innerHTML = await res.text();
+    window.__char = char;
+    window.__frames = FRAMES;
+    window.applyFrame = applyFrame;
+    applyFrame('idle', 0, FRAMES.idle);
+    window.__ready = true;
+  }
+  boot();
+})();
+</script>
+</body>
+</html>
